@@ -19,20 +19,20 @@ code, kbd, pre, samp {
 .subtitle {
 	margin-top: 5px;
 	color: rgba(0,0,0,.7);
-	font-family: 'Raleway', "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 	font-size: 1.8vmin;
 	font-style: italic;
 }
 
 time {
 	color: rgba(0,0,0,.7);
-	font-family: 'Raleway', "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 	font-weight: 300;
 }
 
 span.category {
 	color: rgba(0,0,0,.7);
-	font-family: 'Raleway', "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 	font-weight: 300;
 	text-transform: uppercase;
 	font-size: 1.4vmin;
@@ -57,7 +57,7 @@ figcaption {
 
 h1, h2, h3, h4 {
 	color: #29292c;
-	font-family: 'Raleway', "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 
 h1 {
@@ -109,7 +109,7 @@ p a {
 
 .article p, .article ul li, .article p a, .article ol li {
 	font-size: 2.0vmin;
-	font-family: 'Raleway', "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Helvetica", "Arial", sans-serif;
     font-weight: 400;
     font-style: normal;
     line-height: 1.9;
@@ -232,5 +232,5 @@ div.collapseheader {
 	olor: #d3d3d3;
 	padding: 2px;
 	cursor: pointer;
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
