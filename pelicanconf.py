@@ -7,7 +7,7 @@ SITENAME = u'nonatomic.blog'
 SITEURL = 'http://nonatomiclabs.github.io'
 
 PATH = 'content'
-STATIC_PATHS = ['blog', 'extra/CNAME']
+STATIC_PATHS = ['blog', 'extra/CNAME', 'extra/.travis.yaml']
 ARTICLE_PATHS = ['blog']
 
 TIMEZONE = 'Europe/Paris'
