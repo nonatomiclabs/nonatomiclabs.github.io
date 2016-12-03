@@ -22,23 +22,23 @@ You can use my lighter VMAF image in your Travis CI pipeline by applying the fol
 
 1. Enable Docker in your Travis build, by adding those lines to your Docker file (see the [docs](https://docs.travis-ci.com/user/docker/) for more details)
 
-    ~~~
-    sudo: required
+    ```
+    sudo: required
     services:
       - docker
-    ~~~
+    ```
 
 2. Pull the VMAF Docker image in the `before_install` or `install` step
 
-    ~~~plain
+    ```plain
     before_install:
       - docker pull nonatomiclabs/vmaf:1.0
-    ~~~
+    ```
 
 3. Run the Docker image
 
-    ~~~bash
+    ```bash
     docker run --rm -v /folder/with/video/resources:/tmp nonatomiclabs/vmaf:1.0 run_vmaf yuv420p 1920x1080 /tmp/ref.yuv /tmp/comp.yuv --out-fmt json
-    ~~~
+    ```
 
 Enjoy!
