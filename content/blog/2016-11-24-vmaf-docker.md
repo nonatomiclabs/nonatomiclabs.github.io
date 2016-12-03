@@ -22,7 +22,7 @@ You can use my lighter VMAF image in your Travis CI pipeline by applying the fol
 
 1. Enable Docker in your Travis build, by adding those lines to your Docker file (see the [docs](https://docs.travis-ci.com/user/docker/) for more details)
 
-        sudo: required
+        sudo: required
         services:
           - docker
 
