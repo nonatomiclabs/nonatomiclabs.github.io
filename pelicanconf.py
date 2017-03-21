@@ -4,7 +4,6 @@ from __future__ import unicode_literals
 
 AUTHOR = u'Jean Cruypenynck'
 SITENAME = u'nonatomic.blog'
-SITEURL = 'http://nonatomiclabs.github.io'
 
 PATH = 'content'
 STATIC_PATHS = ['blog', 'extra/CNAME', 'extra/.travis.yaml']
