@@ -128,4 +128,4 @@ For the second, we have to use waves to recreate the architecture of the room an
 
 Although both binaural and transaural listening seem far from us, I think the two methods are a future logical implementation. Binaural personalisation does not seem too hard to create whereas the transaural modelisation of a room would take more years to develop.
 
-[Download this article.](http://nonatomiclabs.com/blog/wp-content/uploads/2015/06/Multichannel_Mobile_Listening_A_State_Of_The_Art.pdf)
+[Download this article.](http://nonatomiclabs.com/download/Multichannel%20Mobile%20Listening%20-%20A%20State%20of%20the%20Art.pdf)
