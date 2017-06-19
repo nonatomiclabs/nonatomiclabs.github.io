@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = u'Jean Cruypenynck'
 SITENAME = u'nonatomic.blog'
+SITEURL = u'http://nonatomiclabs.com'
 
 PATH = 'content'
 STATIC_PATHS = ['blog', 'extra/CNAME', 'extra/.travis.yaml']
@@ -33,8 +34,14 @@ ARTICLE_URL = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}.html'
 ARTICLE_SAVE_AS = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}.html'
 
 THEME = "theme"
-MD_EXTENSIONS = ['codehilite(css_class=codehilite)', 'extra',
-                 'figureAltCaption']
+MARKDOWN = {
+    'extension_configs': {
+        'markdown.extensions.codehilite': {'css_class': 'codehilite'},
+        'markdown.extensions.extra': {},
+        'figureAltCaption': {},
+    },
+    'output_format': 'html5',
+}
 
 PLUGIN_PATHS = ['.']
 PLUGINS = ['render_math']
