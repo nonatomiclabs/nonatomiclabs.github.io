@@ -61,7 +61,7 @@ where:
 As technology did not enable real-time computation of HOA when it was created, we now have enough power to go until 4th-order.  
 Considering the 4th-order, it would give us 25 coefficients and by extension, 25 PCM 48kHz signals (if we consider sampling the soundfield at the usual 48kHz frequency).
 
-![Spherical harmonics up to degree 3 (source Wikipedia)]({attach}ambisonics.png =100x)
+![Spherical harmonics up to degree 3 (source Wikipedia)](ambisonics.png)
 
 However, these 25 signals are often highly correlated and allow a reduction to 6 PCM channels and some metadata, which can then optionally go through the MPEG-H compression engine.
 
@@ -69,13 +69,13 @@ However, these 25 signals are often highly correlated and allow a reduction to 6
 
 Hence, MPEG-H Audio "only" gathers the previous parts together. In fact, MPEG-H Audio allows to work with HOA, audio objects and traditional audio, together.
 
-![MPEG-H audiovisual framework]({attach}mpegh-framework.png =100x)
+![MPEG-H audiovisual framework](mpegh-framework.png)
 
 We can imagine the following scenarios or use cases, as described in the following figures:
 
-![Broadcast workflow]({attach}broadcast-workflow.png =100x)
+![Broadcast workflow](broadcast-workflow.png)
 
-![Movie workflow]({attach}movie-workflow.png =100x)
+![Movie workflow](movie-workflow.png)
 
 # Conclusion
 
