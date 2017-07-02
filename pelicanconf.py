@@ -6,7 +6,7 @@ AUTHOR = u'Jean Cruypenynck'
 SITENAME = u'nonatomic.blog'
 
 PATH = 'content'
-STATIC_PATHS = ['blog', 'download', 'extra/CNAME', 'extra/.travis.yaml']
+STATIC_PATHS = ['blog', 'download', 'extra/CNAME', 'extra/.travis.yaml', 'pages']
 ARTICLE_PATHS = ['blog']
 
 TIMEZONE = 'Europe/Paris'
