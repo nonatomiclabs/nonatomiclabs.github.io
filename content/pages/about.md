@@ -9,3 +9,5 @@ Previously, I worked one year in Dolby as a QA intern, in the team responsible f
 At university, I chose to work for my projects with binaural audio and HEVC compression.
 
 My main areas of interest are digital signal compression, digital signal processing, and programming in C/C++ and Python.
+
+You can find a copy of my CV [here]({filename}/download/CV_EN.pdf)

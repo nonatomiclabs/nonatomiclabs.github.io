@@ -82,4 +82,4 @@ We can imagine the following scenarios or use cases, as described in the followi
 We covered through this paper main aspects of the multichannel audio part of MPEG-H, which seems to answer most of the expectations of the current broadcast industry and to stay flexible enough to stay the standard during a long time. MPEG-H Audio is now ratified by DVB, ATSC 3.0 and Internet streaming, even though Youtube uses with its VP9 another multichannel audio codec: *Opus*.
 Aside from the audio part, the two first parts of MPEG-H also show that it stands by itself as the new top-notch codec for the broadcast industry.
 
-[Download this article.](http://nonatomiclabs.com/download/MPEG-H%20Audio%20-%20Fitting%20Every%20Device.pdf)
+[Download this article.]({filename}/download/MPEG-H%20Audio%20-%20Fitting%20Every%20Device.pdf)
