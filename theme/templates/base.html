@@ -1,65 +1,67 @@
 <!DOCTYPE html>
 <html lang="{{ DEFAULT_LANG }}">
+
 <head>
-	<meta charset="utf-8">
-	<title>{% block title %}{{ SITENAME }}{% endblock %}</title>
-	<meta name="description" content="{% block description %}Coding, audio and iOS{% endblock %}">
-	<meta name="author" content="{{ AUTHOR }}">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-	<!--[if lt IE 9]>
+    <meta charset="utf-8">
+    <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+    <meta name="description" content="{% block description %}Coding, audio and iOS{% endblock %}">
+    <meta name="author" content="{{ AUTHOR }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
 		<script src="{{ SITEURL }}/theme/html5.js"></script>
 		<![endif]-->
-	<link href="{{ SITEURL }}/theme/css/ipython.css" rel="stylesheet">
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-	<link href="{{ SITEURL }}/theme/css/local.css" rel="stylesheet">
-	<link href="{{ SITEURL }}/theme/css/github.css" rel="stylesheet">
-	<link href='https://fonts.googleapis.com/css?family=Raleway:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Ubuntu+Mono' rel='stylesheet' type='text/css'>
-	{% block head %}{% endblock %}
+    <link href="{{ SITEURL }}/theme/css/ipython.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{ SITEURL }}/theme/css/local.css" rel="stylesheet">
+    <link href="{{ SITEURL }}/theme/css/github.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu+Mono' rel='stylesheet' type='text/css'> {% block head %}{% endblock %}
 </head>
+
 <body>
-<div class="container">
-	<div class="page-header">
-	<div class="fa fa-rss fa-2x" style="float: right; margin-top: 10px; font-size: 4vmin; color: #FA9B39;"></div>
-	<a class="fa fa-github fa-2x" style="float: right; margin-top: 10px; margin-right: 20px; font-size: 4vmin; color:black;" href="http://github.com/filaton" target="_blank"></a>
-	<a class="fa fa-twitter fa-2x" style="float: right; margin-top: 10px; margin-right: 20px; font-size: 4vmin; color: rgb(85, 172, 238);" href="http://twitter.com/nonatomiclabs" target="_blank"></a>
-		<h1><a href="{{ SITEURL }}/">{{ SITENAME }}</a>
+    <div class="container">
+        <div class="page-header">
+            <div class="fa fa-rss fa-2x" style="float: right; margin-top: 10px; font-size: 4vmin; color: #FA9B39;"></div>
+            <a class="fa fa-github fa-2x" style="float: right; margin-top: 10px; margin-right: 20px; font-size: 4vmin; color:black;" href="http://github.com/filaton" target="_blank"></a>
+            <a class="fa fa-twitter fa-2x" style="float: right; margin-top: 10px; margin-right: 20px; font-size: 4vmin; color: rgb(85, 172, 238);" href="http://twitter.com/nonatomiclabs" target="_blank"></a>
+            <h1><a href="{{ SITEURL }}/">{{ SITENAME }}</a>
 			<br>{% if SITESUBTITLE %}<small>{{ SITESUBTITLE }}</small></h1>{% endif %}
-		<p class="subtitle">Written by Jean Cruypenynck</p>
-	</div>
-	<div class="row">
-		<div class="col-md-12">
-			{% block content %}{% endblock %}
-		</div>
-	</div> {# End row #}
-	<!-- <hr> -->
-</div> <!-- /container -->
-<div class="container">
-	<div class="row">
-		<div class="col-md-12 text-center center-block aw-bottom">
-			<p>&copy; {{ AUTHOR }} 2017</p>
-		</div>
-	</div>
-</div>
-<!-- JavaScript -->
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-jQuery(document).ready(function($) {
-	$("div.collapseheader").click(function () {
-		$header = $(this).children("span").first();
-		$codearea = $(this).children(".input_area");
-		$codearea.slideToggle(500, function () {
-			$header.text(function () {
-				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
-			});
-		});
-	});
-});
-</script>
-{% include "analytics.html" %}
-{% include "github.html" %}
+            <p class="subtitle">Written by Jean Cruypenynck</p>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {% block content %}{% endblock %}
+            </div>
+        </div> {# End row #}
+        <!-- <hr> -->
+    </div>
+    <!-- /container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center center-block aw-bottom">
+                <p>&copy; {{ AUTHOR }} 2017</p>
+            </div>
+        </div>
+    </div>
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $("div.collapseheader").click(function() {
+            $header = $(this).children("span").first();
+            $codearea = $(this).children(".input_area");
+            $codearea.slideToggle(500, function() {
+                $header.text(function() {
+                    return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
+                });
+            });
+        });
+    });
+    </script>
+    {% include "analytics.html" %} {% include "github.html" %}
 </body>
+
 </html>
