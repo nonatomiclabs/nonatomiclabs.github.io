@@ -11,3 +11,5 @@ At university, I chose to work for my projects with binaural audio and HEVC comp
 My main areas of interest are digital signal compression, digital signal processing, and programming in C/C++ and Python.
 
 You can find a copy of my CV [here]({filename}/download/CV_EN.pdf)
+
+You can find a list of my readings [here]({filename}/pages/readings.md)
