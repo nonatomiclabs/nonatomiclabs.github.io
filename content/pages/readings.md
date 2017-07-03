@@ -24,5 +24,5 @@ Title: Readings
 
 ## March 2017
 
-- *Les Méfaits du tabac* (titre original *О вреде табака*) (1902), Anton Tchekhov, traduit par Elsa Triolet, Gallimard Folio 2017
+- *Les Méfaits du tabac et autres pièces en un acte* (titre original *О вреде табака*) (1902), Anton Tchekhov, traduit par Elsa Triolet, Gallimard Folio 2017
 - *La semaine de 4 heures* (titre original *The 4-Hour Work Week*), Timothy Ferriss, Pearson 2010
