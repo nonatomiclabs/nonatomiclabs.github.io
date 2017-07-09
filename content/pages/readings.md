@@ -8,6 +8,8 @@ Title: Readings
 - *Discours de la servitude volontaire*, Étienne de La Boétie, Fayard Mille et une nuits 1997
 - *Dans les forêts de Sibérie*, Sylvain Tesson, Gallimard Folio 2011
 - *Front-End Web Development: The Big Nerd Ranch Guide*, Chris Aquino & Todd Gandee, Big Nerd Ranch Guides 2016
+- *Les fous du son*, Laurent de Wilde, Grasset 2016
+- *Une très légère oscillation*, Sylvain Tesson, Édition des équateurs 2017
 
 ## June 2017
 
