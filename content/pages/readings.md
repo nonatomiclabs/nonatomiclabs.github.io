@@ -4,12 +4,15 @@ Title: Readings
 
 ## Currently
 
-- *Comment écrire sa thèse*, Umberto Eco, Flammarion 2016
 - *Discours de la servitude volontaire*, Étienne de La Boétie, Fayard Mille et une nuits 1997
 - *Dans les forêts de Sibérie*, Sylvain Tesson, Gallimard Folio 2011
 - *Front-End Web Development: The Big Nerd Ranch Guide*, Chris Aquino & Todd Gandee, Big Nerd Ranch Guides 2016
 - *Les fous du son*, Laurent de Wilde, Grasset 2016
 - *Une très légère oscillation*, Sylvain Tesson, Édition des équateurs 2017
+
+## July 2017
+
+- *Comment écrire sa thèse*, Umberto Eco, Flammarion 2016
 
 ## June 2017
 
