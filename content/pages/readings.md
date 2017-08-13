@@ -10,6 +10,10 @@ Title: Readings
 - *Les fous du son*, Laurent de Wilde, Grasset 2016
 - *Une très légère oscillation*, Sylvain Tesson, Édition des équateurs 2017
 
+## August 2017
+
+- *Confessions d'un chasseur d'opium*, Nick Tosches, Allia 2012
+
 ## July 2017
 
 - *Comment écrire sa thèse*, Umberto Eco, Flammarion 2016
