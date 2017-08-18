@@ -4,7 +4,6 @@ Title: Readings
 
 ## Currently
 
-- *Discours de la servitude volontaire*, Étienne de La Boétie, Fayard Mille et une nuits 1997
 - *Dans les forêts de Sibérie*, Sylvain Tesson, Gallimard Folio 2011
 - *Front-End Web Development: The Big Nerd Ranch Guide*, Chris Aquino & Todd Gandee, Big Nerd Ranch Guides 2016
 - *Les fous du son*, Laurent de Wilde, Grasset 2016
@@ -13,6 +12,7 @@ Title: Readings
 ## August 2017
 
 - *Confessions d'un chasseur d'opium*, Nick Tosches, Allia 2012
+- *Discours de la servitude volontaire*, Étienne de La Boétie, Fayard Mille et une nuits 1997
 
 ## July 2017
 
