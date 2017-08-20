@@ -1,6 +1,6 @@
 Title: About
 
-I am a French student, currently finishing a *Master “ingénierie des systèmes images et sons”*, equivalent to a two-year Master’s degree specializing in audiovisual engineering.
+I am a French student, currently finishing a *Master “ingénierie des systèmes images et sons”*, equivalent to a two-year Master’s degree specializing in audiovisual engineering.
 
 I am now doing my end-of-studies internship at [*Flux:: sound and picture development*](http://fluxhome.com), supporting the development of the newest audio plugins of the company.
 
@@ -10,6 +10,4 @@ At university, I chose to work for my projects with binaural audio and HEVC comp
 
 My main areas of interest are digital signal compression, digital signal processing, and programming in C/C++ and Python.
 
-You can find a copy of my CV [here]({filename}/download/CV_EN.pdf)
-
-You can find a list of my readings [here]({filename}/pages/readings.md)
+You can find a copy of my CV [here]({filename}/download/CV_EN.pdf).
