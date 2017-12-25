@@ -3,10 +3,80 @@
   <head>
     <meta charset="utf-8">
     <title>title</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
   </head>
+  <style type="text/css">
+  	img {
+    	width: 90%;
+    	display: block;
+    	margin: 50px auto;
+    	opacity: 1;
+  		transition: opacity 1s;
+	}
+
+	img[data-src] {
+ 		opacity: 0;
+	}
+
+	#header {
+		height: 200px;
+		width: 90%;
+		padding: 0px;
+		border-radius: 3px;
+		margin: 30px auto;
+		background-color: #2D4654;
+		box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	}
+
+	#header-text {
+		padding: 15px;
+		color: white;
+		font-weight: bold;
+	}
+
+	body {
+		background-color: #DFE0E2;
+	}
+
+	</style>
+
   <body>
-    Test content 3
+    <div id="header">
+    	<p id="header-text">Lorem ipsum dolor sit amet, mazim percipit qui in, qui an solum integre sententiae. Ad omnium euripidis nam. Id alia volumus pro, id vide volumus suscipit vis. Vis ei unum populo, an adhuc solet tacimates has, assueverit vituperatoribus cu quo. Qui et quot nobis persecuti.</p>
+
+		<p id="header-text">Duo partiendo assueverit ad, ea est augue omnes semper. Oblique fabulas vis ad, est probo propriae imperdiet id. Per ad gubergren scriptorem, sed an elit idque salutatus, prompta prodesset mel ei. Mei adhuc scripta an, mea at ceteros ponderum, prompta volutpat ut sed. Est postea quodsi eu.</p>
+    </div>
+
+
+    <div>
+    	<img data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514119835/1_yrnehs.jpg"/>
+    	<img data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514119835/3_kqjlji.jpg"/>
+    	<img data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514119835/4_aavfme.jpg"/>
+    	<img data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514119837/5_akuubp.jpg"/>
+    	<img data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514119835/6_o1rsbf.jpg"/>
+    	<img data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514119835/7_p1akzt.jpg"/>
+    	<img data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514119835/10_rhw5nj.jpg"/>
+    	<img data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514119835/11_pdno42.jpg"/>
+    	<img data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514119835/12_y4cy0x.jpg"/>
+    	<img data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514119835/14_chapsk.jpg"/>
+    	<img data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514119835/19_xzd8lz.jpg"/>
+    	<img data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514119848/20_muidsb.jpg"/>
+    	<img data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514119852/21_nyreo1.jpg"/>
+    	<img data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514119835/22_eowgcc.jpg"/>
+    	<img data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514119835/23_vlznoi.jpg"/>
+    	<img data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514119835/25_x5hyxf.jpg"/>
+    	<img data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514119848/27_gmufpj.jpg"/>
+    	<img data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514119835/31_aormpw.jpg"/>
+    	<img data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514119846/29_bp8g5n.jpg"/>
+	</div>
+
+	<script type="text/javascript">
+    [].forEach.call(document.querySelectorAll('img[data-src]'),    function(img) {
+      img.setAttribute('src', img.getAttribute('data-src'));
+      img.onload = function() {
+        img.removeAttribute('data-src');
+      };
+    });
+	</script>
+
   </body>
 </html>
