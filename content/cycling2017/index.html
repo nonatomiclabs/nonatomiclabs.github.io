@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>🚲 2017</title>
+  </head>
+  <style type="text/css">
+  	img {
+    	display: block;
+    	margin: 10px auto;
+	}
+
+	.blur-up {
+		-webkit-filter: blur(5px);
+		filter: blur(5px);
+		opacity: 0;
+		transition: filter 400ms, -webkit-filter 400ms;
+	}
+
+	.blur-up.lazyloaded {
+		opacity: 1;
+		-webkit-filter: blur(0);
+		filter: blur(0);
+	}
+
+	#picture {
+		margin: 50px auto;
+	}
+
+	#header {
+		padding: 0px;
+		border-radius: 5px;
+		margin: 30px auto;
+		background-color: #E24E1B;
+	}
+
+	#header-text {
+		margin: 0px 5px;
+		text-align: justify;
+    	text-justify: inter-word;
+    	line-height: 120%;
+    	font-weight: 500;
+		color: #fff;
+		display: flex;
+		justify-content: center; /* align horizontal */
+		align-items: center;
+	}
+
+
+
+	#header-text {
+		padding: 15px;
+	}
+
+	#legend {
+		text-align: center;
+		font-weight: lighter;
+		font-style: italic;
+	}
+
+	body {
+		background-color: #FFF;
+		color: #29292c;
+		font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+	}
+
+	#map {
+	 margin: 0px auto;
+	 }
+
+	@media (min-width:320px)  { /* smartphones, iPhone, portrait 480x320 phones */
+		
+		#picture {
+			width: 100%;
+		}
+
+		img {
+			width: 100%;
+		}
+
+		#header {
+			width: 100%;
+		}
+
+		#map {
+			width: 100%;
+			height: 200px;
+		}
+	}
+	@media (min-width:600px)  { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+		#picture {
+			width: 85%;
+		}
+
+		#header {
+			width: 85%;
+		}
+
+		#map {
+			width: 85%;
+			height: 300px;
+		}
+	}
+	@media (min-width:961px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */
+		#picture {
+			width: 900px;
+		}
+
+		#header {
+			width: 900px;
+		}
+		
+		#map {
+			width: 900px;
+			height: 450px;
+		}
+	}
+	@media (min-width:1250px) { /* big landscape tablets, laptops, and desktops */
+		#picture {
+			width: 1200px;
+		}
+
+		#header {
+			width: 1200px;
+		}
+		
+		#map {
+			width: 1200px;
+			height: 600px;
+		}
+	}
+
+	</style>
+
+  <body>
+
+  	<div id="intro">
+	    <div id="header">
+
+	    	<p data-translatable id="header-text">
+	    		<span>
+	    			To remember the end of my studies, I wanted to do something special. That's how I decided to begin a bicycle trip to Poland, where I used to work. I symbolically started it on September 22nd, the first day of Autumn this year and it lead me until December 1st. During this trip, I crossed 8 countries, rode my bicycle <em>almost</em> (😔) 4000 kilometers, under the sun as well as the snow. But the most important is the people who accompanied me along this trip: my 34 CouchSurfing hosts, and family and friends who also welcomed me.
+
+	    			<br/>
+	    			<br/>
+
+	    			You'll find on this web page a map presenting my itinerary as well as pictures I took on my way. I hope you'll enjoy it. This trip would never have been possible without all of you, so thank you very much again!
+
+	    			<br/>
+	    			<br/>
+
+	    			Jean.
+	    		</span>
+	    		<span>
+	    			Pour célébrer la fin de mes études, je voulais faire quelque chose de spécial. C'est pourquoi j'ai décidé de me commencer un voyage à vélo jusqu'à la Pologne, où j'ai travaillé. J'ai choisi de le faire symboliquement commencer le 22 septembre, le premier jour de l'automne cette année et il n'a fini que le premier décembre. Durant ce voyage, j'ai traversé 8 pays, roulé presque (😔) 4000 kilomètres, aussi bien sous le soleil que sous la neige. Mais le plus important, c'est les gens qui m'ont accompagné le long de cette route : mes 34 hôtes <em>CouchSurfing</em>, et ma famille et mes amis qui m'ont aussi hébergé en route.
+
+	    			<br/>
+	    			<br/>
+
+	    			Vous trouverez sur cette page Web une carte présentant mon itinéraire ainsi que des photos que j'ai prises durant cette aventure. J'espère que cela vous plaira. Ce voyage n'aurait jamais été possible sans vous, encore merci !
+
+	    			<br/>
+	    			<br/>
+
+	    			Jean.
+	    		</span>
+	    	</p>
+
+	   		
+
+	    </div>
+
+   		<div id="map"></div>
+	</div>
+
+
+
+    <div id="pictures">
+    	<div id="picture">
+    		<img src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/600w/1.jpg"
+    			 data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/{width}w/1.jpg"
+    		     data-sizes="auto"
+    		     class="lazyload blur-up" />
+
+	    	<p data-translatable id="legend">
+	    		<span>Banks of the Loire river in Gien (France), kilometer 64 out of 3981</span>
+	    		<span>Les bords de Loire à Gien, kilomètre 64 sur 3981</span>
+	    	</p>
+	    </div>
+
+	   <div id="picture">
+	    	<img src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/600w/3.HEIC.jpg"
+	    		 data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/{width}w/3.HEIC.jpg"
+    		     data-sizes="auto"
+    		     class="lazyload blur-up" />
+
+	    	<p data-translatable id="legend">
+	    		<span>Vineyards near Sancerre (France), kilometer 144 out of 3981</span>
+	    		<span>Vignes près de Sancerre, kilomètre 144 sur 3981</span>
+	    	</p>
+	    </div>
+
+	    <div id="picture">
+	    	<img src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/600w/4.HEIC.jpg"
+	    		 data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/{width}w/4.HEIC.jpg"
+    		     data-sizes="auto"
+    		     class="lazyload blur-up" />
+
+	    	<p data-translatable id="legend">
+	    		<span>Guétin's navigable aqueduct in Cuffy (France), kilometer 215 out of 3981</span>
+	    		<span>Le pont-canal du Guétin à Cuffy, kilomètre 215 sur 3981</span>
+	    	</p>
+	    </div>
+
+	    <div id="picture">
+	    	<img src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/600w/5.jpg"
+	    		 data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/{width}w/5.jpg"
+    		     data-sizes="auto"
+    		     class="lazyload blur-up" />
+
+	    	<p data-translatable id="legend">
+	    		<span>The Saône river in Pagny-le-Château (France), kilometer 491 out of 3981</span>
+	    		<span>La Saône à Pagny-le-Château, kilomètre 491 sur 3981</span>
+	    	</p>
+	    </div>
+
+	    <div id="picture">
+	    	<img src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/600w/6.HEIC.jpg"
+	    		 data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/{width}w/6.HEIC.jpg"
+    		     data-sizes="auto"
+    		     class="lazyload blur-up" />
+
+	    	<p data-translatable id="legend">
+	    		<span>Fields in Scey-Maisières (France), kilometer 598 out of 3981</span>
+	    		<span>Champs à Scey-Maisières, kilomètre 598 sur 3981</span>
+	    	</p>
+	    </div>
+
+	    <div id="picture">
+	    	<img src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/600w/7.HEIC.jpg"
+	    		 data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/{width}w/7.HEIC.jpg"
+    		     data-sizes="auto"
+    		     class="lazyload blur-up" />
+
+	    	<p data-translatable id="legend">
+	    		<span>The Rhine in Basel (Switzerland), kilometer 825 out of 3981</span>
+	    		<span>Le Rhin à Bâle (Suisse), kilomètre 825 sur 3981</span>
+	    	</p>
+	    </div>
+
+	    <div id="picture">
+	    	<img src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/600w/10.HEIC.jpg"
+	    		 data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/{width}w/10.HEIC.jpg"
+    		     data-sizes="auto"
+    		     class="lazyload blur-up" />
+
+	    	<p data-translatable id="legend">
+	    		<span>Lake Constance (Switzerland), kilometer 1019 out of 3981</span>
+	    		<span>Lac de Constance (Suisse), kilomètre 1019 sur 3981</span>
+	    	</p>
+	    </div>
+
+	    <div id="picture">
+	    	<img src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/600w/11.HEIC.jpg"
+	    		 data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/{width}w/11.HEIC.jpg"
+    		     data-sizes="auto"
+    		     class="lazyload blur-up" />
+
+	    	<p data-translatable id="legend">
+	    		<span>Fields near Tapfheim (Germany), kilometer 1267 out of 3981</span>
+	    		<span>Champs près de Tapfheim (Allemagne), kilomètre 1267 sur 3981</span>
+	    	</p>
+	    </div>
+
+	    <div id="picture">
+	    	<img src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/600w/12.HEIC.jpg"
+	    		 data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/{width}w/12.HEIC.jpg"
+    		     data-sizes="auto"
+    		     class="lazyload blur-up" />
+
+	    	<p data-translatable id="legend">
+	    		<span>The Danube in Ingolstadt (Germany), kilometer 1333 out of 3981</span>
+	    		<span>Le Danube à Ingolstadt (Allemagne), kilomètre 1333 sur 3981</span>
+	    	</p>
+	    </div>
+
+	    <div id="picture">
+	    	<img src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/600w/14.HEIC.jpg"
+	    		 data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/{width}w/14.HEIC.jpg"
+    		     data-sizes="auto"
+    		     class="lazyload blur-up" />
+
+	    	<p data-translatable id="legend">
+	    		<span>The Danube in Grein (Austria), kilometer 1712 out of 3981</span>
+	    		<span>Le Danube à Grein (Autriche), kilomètre 1712 sur 3981</span>
+	    	</p>
+	    </div>
+
+	    <div id="picture">
+	    	<img src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/600w/19.HEIC.jpg"
+	    		 data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/{width}w/19.HEIC.jpg"
+    		     data-sizes="auto"
+    		     class="lazyload blur-up" />
+
+	    	<p data-translatable id="legend">
+	    		<span>Sunset in the fields near Mistelbach (Austria), kilometer 1921 out of 3981</span>
+	    		<span>Coucher de soleil sur les champs près de Mistelbach (Autriche), kilomètre 1921 sur 3981</span>
+	    	</p>
+	    </div>
+
+	    <div id="picture">
+	    	<img src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/600w/20.jpg"
+	    		 data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/{width}w/20.jpg"
+    		     data-sizes="auto"
+    		     class="lazyload blur-up" />
+
+	    	<p data-translatable id="legend">
+	    		<span>The Thaya river in Dolní Věstonice (Czechia), kilometer 2099 out of 3981</span>
+	    		<span>La rivière Thaya à Dolní Věstonice (Tchéquie), kilomètre 2099 sur 3981</span>
+	    	</p>
+	    </div>
+
+	    <div id="picture">
+	    	<img src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/600w/21.jpg"
+	    		 data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/{width}w/21.jpg"
+    		     data-sizes="auto"
+    		     class="lazyload blur-up" />
+
+	    	<p data-translatable id="legend">
+	    		<span>The Road 44, Loučná nad Desnou (Czechia), kilometer 2183 out of 3981</span>
+	    		<span>Route 44 à Loučná nad Desnou (Tchéquie), kilomètre 2183 sur 3981</span>
+	    	</p>
+	    </div>
+
+	    <div id="picture">
+	    	<img src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/600w/22.HEIC.jpg"
+	    		 data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/{width}w/22.HEIC.jpg"
+    		     data-sizes="auto"
+    		     class="lazyload blur-up" />
+
+	    	<p data-translatable id="legend">
+	    		<span>After the storm in Makowice (Poland), kilometer 2253 out of 3981</span>
+	    		<span>Après l'orage à Makowice (Pologne), kilomètre 2253 sur 3981</span>
+	    	</p>
+	    </div>
+
+	    <div id="picture">
+	    	<img src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/600w/23.HEIC.jpg"
+	    		 data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/{width}w/23.HEIC.jpg"
+    		     data-sizes="auto"
+    		     class="lazyload blur-up" />
+
+	    	<p data-translatable id="legend">
+	    		<span>Forest near Koniówko (Poland), kilometer 2312 out of 3981</span>
+	    		<span>La forêt près de Koniówko (Pologne), kilomètre 2312 sur 3981</span>
+	    	</p>
+	    </div>
+
+	    <div id="picture">
+	    	<img src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/600w/25.HEIC.jpg"
+	    		 data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/{width}w/25.HEIC.jpg"
+    		     data-sizes="auto"
+    		     class="lazyload blur-up" />
+
+	    	<p data-translatable id="legend">
+	    		<span>Fields near Fehrbellin (Germany), kilometer 2698 out of 3981</span>
+	    		<span>Champs près de Fehrbellin (Allemagne), kilomètre 2698 sur 3981</span>
+	    	</p>
+	    </div>
+
+	    <div id="picture">
+	    	<img src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/600w/27.jpg"
+	    		 data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/{width}w/27.jpg"
+    		     data-sizes="auto"
+    		     class="lazyload blur-up" />
+
+	    	<p data-translatable id="legend">
+	    		<span>The Elbe river in Scharleuk (Germany), kilometer 2769 out of 3981</span>
+	    		<span>L'Elbe à Scharleuk (Allemagne), kilomètre 2769 sur 3981</span>
+	    	</p>
+	    </div>
+
+	    <div id="picture">
+	    	<img src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/600w/31.HEIC.jpg"
+	    		 data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/{width}w/31.HEIC.jpg"
+    		     data-sizes="auto"
+    		     class="lazyload blur-up" />
+
+	    	<p data-translatable id="legend">
+	    		<span>L'Aa of Weerijs à Rijsbergen (Pays-Bas), kilometer 3687 out of 3981</span>
+	    		<span>The Aa of Weerijs in Rijsbergen (Netherlands), kilomètre 3687 sur 3981</span>
+	    	</p>
+	    </div>
+
+	    <div id="picture">
+	    	<img src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/600w/29.jpg"
+	    		 data-src="http://res.cloudinary.com/dqgrto2gl/image/upload/v1514635085/{width}w/29.jpg"
+    		     data-sizes="auto"
+    		     class="lazyload blur-up" />
+
+	    	<p data-translatable id="legend">
+	    		<span>Snow-covered fields in Lennik (Belgium), kilometer 3861 out of 3981</span>
+	    		<span>Champs enneigés à Lennik (Belgique), kilomètre 3861 sur 3981</span>
+	    	</p>
+	    </div>
+
+	</div>
+
+	<div id="footer">
+		<p style="text-align: center;">© Jean Cruypenynck 2017</p>
+	</div>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.0.1/plugins/rias/ls.rias.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.0.1/lazysizes.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/dom-i18n@1.1.1/dist/dom-i18n.min.js"></script>
+
+	<script type="text/javascript">
+
+		// Lazysizes config
+		window.lazySizesConfig = window.lazySizesConfig || {};
+		window.lazySizesConfig.rias = window.lazySizesConfig.rias || {};
+		window.lazySizesConfig.rias.widths = [300, 600, 900, 1200, 2400];
+
+		// I18n config
+	    domI18n({
+	          languages: ['en', 'fr']
+	        });
+
+	    // Map config
+      var map;
+      var src = '../trace.kml';
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+         	center: new google.maps.LatLng(50.2, 7.3),
+         	zoom: 6,
+         	mapTypeId: 'terrain',
+         	disableDefaultUI: true,
+          	zoomControl: true,
+          	styles:
+					[
+					  {
+					    "elementType": "geometry",
+					    "stylers": [
+					      {
+					        "color": "#f5f5f5"
+					      }
+					    ]
+					  },
+					  {
+					    "elementType": "labels.icon",
+					    "stylers": [
+					      {
+					        "visibility": "off"
+					      }
+					    ]
+					  },
+					  {
+					    "elementType": "labels.text.fill",
+					    "stylers": [
+					      {
+					        "color": "#616161"
+					      }
+					    ]
+					  },
+					  {
+					    "elementType": "labels.text.stroke",
+					    "stylers": [
+					      {
+					        "color": "#f5f5f5"
+					      }
+					    ]
+					  },
+					  {
+					    "featureType": "administrative.country",
+					    "elementType": "geometry.stroke",
+					    "stylers": [
+					      {
+					        "color": "#c6c6c6"
+					      },
+					      {
+					        "lightness": 5
+					      },
+					      {
+					        "visibility": "on"
+					      },
+					      {
+					        "weight": 1.5
+					      }
+					    ]
+					  },
+					  {
+					    "featureType": "administrative.land_parcel",
+					    "elementType": "labels.text.fill",
+					    "stylers": [
+					      {
+					        "color": "#bdbdbd"
+					      }
+					    ]
+					  },
+					  {
+					    "featureType": "administrative.locality",
+					    "elementType": "geometry.stroke",
+					    "stylers": [
+					      {
+					        "visibility": "on"
+					      },
+					      {
+					        "weight": 2
+					      }
+					    ]
+					  },
+					  {
+					    "featureType": "administrative.locality",
+					    "elementType": "labels.text",
+					    "stylers": [
+					      {
+					        "visibility": "on"
+					      }
+					    ]
+					  },
+					  {
+					    "featureType": "administrative.province",
+					    "stylers": [
+					      {
+					        "visibility": "on"
+					      }
+					    ]
+					  },
+					  {
+					    "featureType": "administrative.province",
+					    "elementType": "geometry.fill",
+					    "stylers": [
+					      {
+					        "visibility": "on"
+					      }
+					    ]
+					  },
+					  {
+					    "featureType": "administrative.province",
+					    "elementType": "geometry.stroke",
+					    "stylers": [
+					      {
+					        "weight": 2
+					      }
+					    ]
+					  },
+					  {
+					    "featureType": "poi",
+					    "elementType": "geometry",
+					    "stylers": [
+					      {
+					        "color": "#eeeeee"
+					      }
+					    ]
+					  },
+					  {
+					    "featureType": "poi",
+					    "elementType": "labels.text.fill",
+					    "stylers": [
+					      {
+					        "color": "#757575"
+					      }
+					    ]
+					  },
+					  {
+					    "featureType": "poi.park",
+					    "elementType": "geometry",
+					    "stylers": [
+					      {
+					        "color": "#e5e5e5"
+					      }
+					    ]
+					  },
+					  {
+					    "featureType": "poi.park",
+					    "elementType": "labels.text.fill",
+					    "stylers": [
+					      {
+					        "color": "#9e9e9e"
+					      }
+					    ]
+					  },
+					  {
+					    "featureType": "road",
+					    "elementType": "geometry",
+					    "stylers": [
+					      {
+					        "color": "#ffffff"
+					      }
+					    ]
+					  },
+					  {
+					    "featureType": "road.arterial",
+					    "stylers": [
+					      {
+					        "visibility": "on"
+					      }
+					    ]
+					  },
+					  {
+					    "featureType": "road.arterial",
+					    "elementType": "labels.text.fill",
+					    "stylers": [
+					      {
+					        "color": "#757575"
+					      }
+					    ]
+					  },
+					  {
+					    "featureType": "road.highway",
+					    "stylers": [
+					      {
+					        "visibility": "off"
+					      }
+					    ]
+					  },
+					  {
+					    "featureType": "road.highway",
+					    "elementType": "geometry",
+					    "stylers": [
+					      {
+					        "color": "#dadada"
+					      },
+					      {
+					        "visibility": "simplified"
+					      }
+					    ]
+					  },
+					  {
+					    "featureType": "road.highway",
+					    "elementType": "geometry.stroke",
+					    "stylers": [
+					      {
+					        "visibility": "off"
+					      }
+					    ]
+					  },
+					  {
+					    "featureType": "road.highway",
+					    "elementType": "labels.text.fill",
+					    "stylers": [
+					      {
+					        "color": "#616161"
+					      }
+					    ]
+					  },
+					  {
+					    "featureType": "road.local",
+					    "elementType": "geometry",
+					    "stylers": [
+					      {
+					        "visibility": "on"
+					      }
+					    ]
+					  },
+					  {
+					    "featureType": "road.local",
+					    "elementType": "labels.text.fill",
+					    "stylers": [
+					      {
+					        "color": "#9e9e9e"
+					      }
+					    ]
+					  },
+					  {
+					    "featureType": "transit.line",
+					    "elementType": "geometry",
+					    "stylers": [
+					      {
+					        "color": "#e5e5e5"
+					      }
+					    ]
+					  },
+					  {
+					    "featureType": "transit.station",
+					    "elementType": "geometry",
+					    "stylers": [
+					      {
+					        "color": "#eeeeee"
+					      }
+					    ]
+					  },
+					  {
+					    "featureType": "water",
+					    "elementType": "geometry",
+					    "stylers": [
+					      {
+					        "color": "#c9c9c9"
+					      }
+					    ]
+					  },
+					  {
+					    "featureType": "water",
+					    "elementType": "labels.text.fill",
+					    "stylers": [
+					      {
+					        "color": "#9e9e9e"
+					      }
+					    ]
+					  }
+					]
+        });
+
+        var kmlLayer = new google.maps.KmlLayer(src, {
+          suppressInfoWindows: true,
+          preserveViewport: true,
+          map: map
+        });
+
+        var zoomLevelSizes = [
+          {triggerWidth: 1000, zoomLevel: 6 },
+          {triggerWidth: 720, zoomLevel: 5 },
+          {triggerWidth: 320, zoomLevel: 4 }
+        ];
+
+		var mq = window.matchMedia( "(min-width: 300px)" );
+		if (mq.matches) {
+		    map.setZoom(4);
+		}
+		var mq2 = window.matchMedia( "(min-width: 600px)" );
+		if (mq2.matches) {
+		    map.setZoom(5);
+		}
+        var mq3 = window.matchMedia( "(min-width: 1000px)" );
+		if (mq3.matches) {
+		    map.setZoom(6);
+		}
+
+      }
+    </script>
+    <script async defer
+    	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDm3H3cogj0bqMRDWOoWzvzbzoHySmEpWo&callback=initMap">
+    </script>
+
+  </body>
+</html>
