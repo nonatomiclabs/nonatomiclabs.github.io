@@ -13,12 +13,10 @@
 	.blur-up {
 		-webkit-filter: blur(5px);
 		filter: blur(5px);
-		opacity: 0;
 		transition: filter 400ms, -webkit-filter 400ms;
 	}
 
 	.blur-up.lazyloaded {
-		opacity: 1;
 		-webkit-filter: blur(0);
 		filter: blur(0);
 	}
@@ -387,8 +385,8 @@
     		     class="lazyload blur-up" />
 
 	    	<p data-translatable id="legend">
-	    		<span>L'Aa of Weerijs à Rijsbergen (Pays-Bas), kilometer 3687 out of 3981</span>
-	    		<span>The Aa of Weerijs in Rijsbergen (Netherlands), kilomètre 3687 sur 3981</span>
+	    		<span>The Aa of Weerijs in Rijsbergen (Netherlands), kilometer 3687 out of 3981</span>
+	    		<span>L'Aa of Weerijs à Rijsbergen (Pays-Bas), kilomètre 3687 sur 3981</span>
 	    	</p>
 	    </div>
 
@@ -407,7 +405,7 @@
 	</div>
 
 	<div id="footer">
-		<p style="text-align: center;">© Jean Cruypenynck 2017</p>
+		<p style="text-align: center;">© Jean Cruypenynck 2018</p>
 	</div>
 
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.0.1/plugins/rias/ls.rias.min.js"></script>
@@ -428,7 +426,7 @@
 
 	    // Map config
       var map;
-      var src = '../trace.kml';
+      var src = 'https://raw.githubusercontent.com/nonatomiclabs/nonatomiclabs.github.io/master/cycling2017/trace.kml';
 
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
@@ -707,12 +705,6 @@
           preserveViewport: true,
           map: map
         });
-
-        var zoomLevelSizes = [
-          {triggerWidth: 1000, zoomLevel: 6 },
-          {triggerWidth: 720, zoomLevel: 5 },
-          {triggerWidth: 320, zoomLevel: 4 }
-        ];
 
 		var mq = window.matchMedia( "(min-width: 300px)" );
 		if (mq.matches) {
