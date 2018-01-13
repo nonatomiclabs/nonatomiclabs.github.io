@@ -4,9 +4,21 @@ Title: Readings
 
 ## Currently
 
-- *Dans les forêts de Sibérie*, Sylvain Tesson, Gallimard Folio 2011
-- *Front-End Web Development: The Big Nerd Ranch Guide*, Chris Aquino & Todd Gandee, Big Nerd Ranch Guides 2016
 - *Les fous du son*, Laurent de Wilde, Grasset 2016
+- *Vol de nuit*, Antoine de Saint-Exupéry, Gallimard Folio 2007
+
+## January 2018
+
+- *Dans les forêts de Sibérie*, Sylvain Tesson, Gallimard Folio 2011
+- *Le petit prince*, Antoine de Saint-Exupéry, Gallimard Folio 1999
+
+## December 2017
+
+- *Lettres à un jeune poête*, Rainer Maria Rilke, Grasset 1996
+
+## September 2017
+
+- *Front-End Web Development: The Big Nerd Ranch Guide*, Chris Aquino & Todd Gandee, Big Nerd Ranch Guides 2016
 
 ## August 2017
 
