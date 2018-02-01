@@ -5,12 +5,12 @@ Title: Readings
 ## Currently
 
 - *Les fous du son*, Laurent de Wilde, Grasset 2016
-- *Vol de nuit*, Antoine de Saint-Exupéry, Gallimard Folio 2007
 
 ## January 2018
 
 - *Dans les forêts de Sibérie*, Sylvain Tesson, Gallimard Folio 2011
 - *Le petit prince*, Antoine de Saint-Exupéry, Gallimard Folio 1999
+- *Vol de nuit*, Antoine de Saint-Exupéry, Gallimard Folio 2007
 
 ## December 2017
 
