@@ -1,8 +1,10 @@
 Title: About
 
-I am a French student, currently finishing a *Master “ingénierie des systèmes images et sons”*, equivalent to a two-year Master’s degree specializing in audiovisual engineering.
+I am a French software engineer, specializing in programming audio and video software.
 
-I am now doing my end-of-studies internship at [*Flux:: sound and picture development*](http://fluxhome.com), supporting the development of the newest audio plugins of the company.
+I recently finished my *"Master ingénierie des systèmes images et sons”*, equivalent to a two-year Master’s degree specializing in audiovisual engineering.
+
+I did my end-of-studies internship at [*Flux:: sound and picture development*](http://fluxhome.com), supporting the development of the newest audio software of the company.
 
 Previously, I worked one year in Dolby as a QA intern, in the team responsible for the AC-4 codec.
 
