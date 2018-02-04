@@ -1,18 +1,18 @@
-Title: How Swift Is Changing The Way We Learn Programming?
+Title: How Is Swift Changing the Way We Learn Programming?
 Date: 2015-02-09
 Category: Swift
 Summary: *Swift*, the new programming language introduced by Apple eight months ago and which already reached the 25th rank of the most used languages list according to [TIOBE’s index](http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html), might be more important than expected for worldwide developer’s community.
 
 *Swift*, the new programming language introduced by Apple eight months ago and which already reached the 25th rank of the most used languages list according to [TIOBE’s index](http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html), might be more important than expected for worldwide developer’s community.
 
-![]({attach}swift-logo.png)
+![Swift logo]({attach}swift-logo.png)
 
 Every programmer first looking at a Swift program should be able to understand its logic, firstly because Swift is highly readable but above all because *Swift is not a total revolution*! Yes, it does introduce new concepts and keywords but it does not change things radically.
 You can find in Swift a wide common background with almost every object-oriented language like variables, conditions, functions, objects, classes, methods, etc.
 
 As Python, Swift was created with simplicity in mind but is, according to benchmarks, more efficient than its predecessor. Anyway, the debate *Python VS Swift* is not really interesting because both are not designed for same platforms, Swift being totally dedicated to iOS/OS X.
 
-![]({attach}swift-performances.png)
+![Benchmark of Swift performances]({attach}swift-performances.png)
 
 For me, the first big breakup that Swift creates with previous C-inspired languages is by not being a superset of it, meaning that *you can’t compile C code in a Swift project* as you could do in C++ or Objective-C for example. Backward compatibility with C, as in every area, is both a good and bad thing; by abandoning C, Swift allows us to start on good foundation.
 
@@ -40,6 +40,4 @@ I think we are in a transition period between a inevitable education about low-l
 Another interesting point is that, as shown amongst others by introduction of M7 motion coprocessor by Apple in iPhone 5S, industry slowly comes back to a CISC architecture, opposed to the current RISC one, meaning concretely communication capabilities between different classic elements (sound card, GPS, etc.) without necessarily going through the CPU runtime.
 We can then think that future of programming will be about specialization in one field, as complex as many fields before.
 
-Eventally, even if Swift will probably never be available on other platforms than iOS and OS X, it opens a new way to define what programming languages will look like tomorrow, based on ease and efficience with both quick playgrounds and biggest programs, all with a simpler syntax without any compromise about safety.
-
-For those who do not want to learn Swift because it is Apple’s exclusive, feel free to do so! Apple provides a framework in which we have a lot of capabilities while we do not have to manage a lot of things, thanks to the OS. It is sure that if you want to go against Apple’s logic, you will find a lot of bad points against Swift, but if you accept to play in this framework provided by Apple, it is a pleasure to code in Swift.
+Eventally, even if Swift will probably never be available on other platforms than iOS and OS X, it opens a new way to define what programming languages will look like tomorrow, based on ease and efficiency with both quick playgrounds and bigger programs, all with a simpler syntax without any compromise about safety.
