@@ -1,7 +1,7 @@
 Title: Stupid Questions #1: Base64 Encoding
 Date: 2018-02-04 20:00
 Category: Stupid Questions
-Summary: [PyAudio](http://people.csail.mit.edu/hubert/pyaudio/) provides bindings for the famous C library PortAudio and allows playing and recording audio in realtime with Python.
+Summary: A very short introduction to Base64 Encoding
 
 <div class="alert alert-success" role="alert">
   <p style="text-align: justify;">
