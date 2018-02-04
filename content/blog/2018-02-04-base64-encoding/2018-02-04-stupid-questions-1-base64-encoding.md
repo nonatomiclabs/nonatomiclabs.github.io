@@ -3,11 +3,11 @@ Date: 2018-02-04 20:00
 Category: Stupid Questions
 Summary: [PyAudio](http://people.csail.mit.edu/hubert/pyaudio/) provides bindings for the famous C library PortAudio and allows playing and recording audio in realtime with Python.
 
-<p style="text-align: justify;"><em>
-This post is the first in a new category called "Stupid Questions". These will be short posts, answering questions with a simple but not always obvious answer. These questions are the kind of questions one (me included) could be ashamed to ask because they seem stupid, hence the title of this category!*
-</em></p>
-
-----
+<div class="alert alert-success" role="alert">
+  <p style="text-align: justify;">
+  This post is the first in a new category called "Stupid Questions". These will be short posts, answering questions with a simple but not always obvious answer. These questions are the kind of questions one (me included) could be ashamed to ask because they seem stupid, hence the title of this category!*
+  </p>
+</div>
 
 While reading recently about the new features of Python 3.6, I stumbled upon the [documentation](https://docs.python.org/3/library/secrets.html#secrets.token_urlsafe) of the brand new `secrets` module where we can find this sentence:
 
