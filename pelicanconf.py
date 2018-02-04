@@ -38,12 +38,10 @@ ARTICLE_SAVE_AS = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}.html'
 
 THEME = "theme"
 MARKDOWN = {
+    'extensions' : ['markdown.extensions.codehilite', 'markdown.extensions.extra', 'markdown.extensions.meta'],
     'extension_configs': {
-        'markdown.extensions.codehilite': {'css_class': 'codehilite'},
-        'markdown.extensions.extra': {},
-        'figureAltCaption': {},
-    },
-    'output_format': 'html5',
+        'markdown.extensions.codehilite': {'css_class': 'highlight'}
+    }
 }
 
 PLUGIN_PATHS = ['.']
