@@ -1,4 +1,4 @@
-Title: Save Facebook articles to Pocket
+Title: Save Facebook Articles to Pocket
 Date: 2015-09-02 21:20
 Category: Productivity, iOS
 Summary: A simple Workflow to add articles found on Facebook to Pocket.

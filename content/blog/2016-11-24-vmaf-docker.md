@@ -1,4 +1,4 @@
-Title: Netflix's VMAF in a Travis CI pipeline with Docker
+Title: Netflix's VMAF in a Travis CI Pipeline With Docker
 Date: 2016-12-03 15:56
 Category: Linux
 Summary: A shrinked version of Netflix's VMAF Docker image to run easily in your CI pipeline

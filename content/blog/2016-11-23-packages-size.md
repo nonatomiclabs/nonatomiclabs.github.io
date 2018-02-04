@@ -1,4 +1,4 @@
-Title: Know the size of an Ubuntu package prior to downloading it
+Title: Know the Size of an Ubuntu Package Prior to Downloading It
 Date: 2016-11-23 22:20
 Category: Linux
 Summary: Have you ever wanted to know the amount of data which will be downloaded when you install a package with `apt-get`?
