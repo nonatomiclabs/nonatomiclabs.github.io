@@ -12,7 +12,7 @@ After reading [this](http://techblog.netflix.com/2016/06/toward-practical-percep
 The great thing is that, thanks to [Leandro Moreira](https://github.com/Netflix/vmaf/pull/33) (who actually recently wrote a nice [article](https://leandromoreira.com.br/2016/10/09/how-to-measure-video-quality-perception) article about video quality metrics), [there](https://github.com/Netflix/vmaf/blob/master/Dockerfile) is a Dockerfile for the project.
 
 However, the Dockerfile installs dependencies for each and every one feature of the project, resulting in a Docker image of over 3GB.  
-With the help of my one-liner to get the download size of a package prior to downloading it published [recently]({filename}2016-11-23-packages-size.md}), I could identify which packages take most of the space (namely `python-pandas` and `python-sympy`).
+With the help of my one-liner to get the download size of a package prior to downloading it published [recently]({filename}2016-11-23-packages-size.md), I could identify which packages take most of the space (namely `python-pandas` and `python-sympy`).
 
 So I created a new version of the Docker image, which packs only the stuff necessary to compute the VMAF. It now weighs around 1GB and you can find on Docker hub at [this address](https://hub.docker.com/r/nonatomiclabs/vmaf/)! 🎉
 
