@@ -4,6 +4,14 @@ Title: Readings
 
 ## Currently
 
+- *How to Read a Book*, Mortimer Adler & Charles Van Doren, Simon & Schuster 1972
+- *Tools of Titans*, Timothy Ferriss, Houghton Mifflin Harcourt 2016
+- *Apprendre à s'organiser*, Stéphanie Bujon & Laurence Einfalt, Eyrolles 2017
+- *Hands On Machine Learning with Scikit-Learn and TensorFlow*, Aurélien Géron, O'Reilly 2017
+- *La Chute*, Albert Camus, Gallimard La Pléiade 2008
+
+## February 2018
+
 - *Les fous du son*, Laurent de Wilde, Grasset 2016
 
 ## January 2018
