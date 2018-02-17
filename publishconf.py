@@ -10,7 +10,7 @@ import sys
 sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 from pelicanconf import *
 
-SITEURL = 'https://nonatomiclabs.github.io'
+SITEURL = '//nonatomiclabs.github.io'
 RELATIVE_URLS = False
 
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
