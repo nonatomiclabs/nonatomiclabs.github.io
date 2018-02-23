@@ -6,7 +6,7 @@ Summary: Learn how to use ImageMagick to adjust an image's background
 You probably have already downloaded once an image with a white background, such as this one (the grey area around the logo just serves the purpose of seeing the white background).
 
 <figure class="figure">
-  <img src="./logo-white.png" alt="Logo with white background" style="padding: 20px; background:rgb(222, 222, 222); border-radius: 5px;"/>
+  <img src="{attach}logo-white.png" alt="Logo with white background" style="padding: 20px; background:rgb(222, 222, 222); border-radius: 5px;"/>
   <figcaption class="figure-caption">Logo with white background</figcaption>
 </figure>
 
@@ -37,14 +37,14 @@ Trying this command with our image from above gives the following. This looks fi
   <div class="row">
     <div class="col-xs-12 col-md-6">
       <figure class="figure">
-        <img src="./logo-transparent1.png" alt="Logo with transparent background" style="padding: 20px; background:rgb(222, 222, 222); border-radius: 5px;"/>
+        <img src="{attach}logo-transparent1.png" alt="Logo with transparent background" style="padding: 20px; background:rgb(222, 222, 222); border-radius: 5px;"/>
         <figcaption class="figure-caption">Logo with transparent background</figcaption>
       </figure>
     </div>
 
     <div class="col-xs-12 col-md-6">
       <figure class="figure">
-        <img class="figure-img img-fluid rounded" src="./logo-transparent1-detail.png" alt="Close-up of the logo with transparent background" style="padding: 20px; background:rgb(222, 222, 222); border-radius: 5px;"/>
+        <img class="figure-img img-fluid rounded" src="{attach}logo-transparent1-detail.png" alt="Close-up of the logo with transparent background" style="padding: 20px; background:rgb(222, 222, 222); border-radius: 5px;"/>
         <figcaption class="figure-caption">Close-up of the logo</figcaption>
       </figure>
     </div>
@@ -63,14 +63,14 @@ Voilà!
   <div class="row">
     <div class="col-xs-12 col-md-6">
       <figure class="figure">
-        <img src="./logo-transparent2.png" alt="Logo with transparent background" style="padding: 20px; background:rgb(222, 222, 222); border-radius: 5px;"/>
+        <img src="{attach}logo-transparent2.png" alt="Logo with transparent background" style="padding: 20px; background:rgb(222, 222, 222); border-radius: 5px;"/>
         <figcaption class="figure-caption">Logo</figcaption>
       </figure>
     </div>
 
     <div class="col-xs-12 col-md-6">
       <figure class="figure">
-        <img class="figure-img img-fluid rounded" src="./logo-transparent2-detail.png" alt="Close-up of the logo with transparent background" style="padding: 20px; background:rgb(222, 222, 222); border-radius: 5px;"/>
+        <img class="figure-img img-fluid rounded" src="{attach}logo-transparent2-detail.png" alt="Close-up of the logo with transparent background" style="padding: 20px; background:rgb(222, 222, 222); border-radius: 5px;"/>
         <figcaption class="figure-caption">Close-up</figcaption>
       </figure>
     </div>
