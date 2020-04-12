@@ -6,7 +6,7 @@ AUTHOR = u'Jean Cruypenynck'
 SITENAME = u'nonatomic.blog'
 
 PATH = 'content'
-STATIC_PATHS = ['blog', 'download', 'extra/CNAME', 'extra/favicon.ico', 'extra/robots.txt' 'extra/.travis.yaml', 'pages', 'cycling2017']
+STATIC_PATHS = ['blog', 'download', 'extra/CNAME', 'extra/favicon.ico', 'extra/robots.txt' 'extra/.travis.yaml', 'pages', 'cycling2017', 'titanic']
 ARTICLE_PATHS = ['blog']
 EXTRA_PATH_METADATA = {
     'extra/favicon.ico': {'path': 'favicon.ico'},
