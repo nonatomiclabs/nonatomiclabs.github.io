@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>nonatomic.blog - Image Processing</title><link href="https://www.nonatomiclabs.com/" rel="alternate"></link><link href="https://www.nonatomiclabs.com/feeds/image-processing.atom.xml" rel="self"></link><id>https://www.nonatomiclabs.com/</id><updated>2018-02-23T00:00:00+01:00</updated><entry><title>How to Make an Image's Background Transparent?</title><link href="https://www.nonatomiclabs.com/blog/2018/02/23/how-to-make-an-images-background-transparent.html" rel="alternate"></link><published>2018-02-23T00:00:00+01:00</published><updated>2018-02-23T00:00:00+01:00</updated><author><name>Jean Cruypenynck</name></author><id>tag:www.nonatomiclabs.com,2018-02-23:/blog/2018/02/23/how-to-make-an-images-background-transparent.html</id><summary type="html">&lt;p&gt;Learn how to use ImageMagick to adjust an image's background&lt;/p&gt;</summary><content type="html">&lt;p&gt;You probably have already downloaded once an image with a white background, such as this one (the grey area around the logo just serves the purpose of seeing the white background).&lt;/p&gt;
+&lt;figure class="figure"&gt;
+  &lt;img src="https://www.nonatomiclabs.com/blog/2018/02/23/logo-white.png" alt="Logo with white background" style="padding: 20px; background:rgb(222, 222, 222); border-radius: 5px;"/&gt;
+  &lt;figcaption class="figure-caption"&gt;Logo with white background&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;For a number of reasons, one could want to have the same image with a transparent background. Luckily, &lt;a href="http://imagemagick.org/script/index.php"&gt;ImageMagick&lt;/a&gt; has our back covered once more.&lt;/p&gt;
+&lt;p&gt;If you haven't already, install ImageMagick:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;brew update &amp;amp;&amp;amp; brew install imagemagick
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class="alert alert-info" role="alert"&gt;
+  &lt;h4 class="alert-heading"&gt;Info&lt;/h4&gt;
+  Even though installed as &lt;code&gt;imagemagick&lt;/code&gt;, there is no &lt;code&gt;imagemagick&lt;/code&gt; command. Instead, &lt;a href="https://imagemagick.org/script/command-line-tools.php"&gt;many separate commands&lt;/a&gt; are defined for different use cases. Today, we'll use the &lt;code&gt;convert&lt;/code&gt; command.
+&lt;/div&gt;
+
+&lt;p&gt;With ImageMagick installed, the easiest way to remove the white background is to use the following command:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;convert test.png -transparent white transparent.png
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The command is very simple: we pass an input and output files and the &lt;a href="https://imagemagick.org/script/command-line-options.php#transparent"&gt;&lt;code&gt;-transparent&lt;/code&gt; option&lt;/a&gt; is used to select the color we want to make transparent which can be passed as a color name or in hex/RGB format. Of course, you should choose an output format which handles transparency, such as PNG. The input can be in any format though.&lt;/p&gt;
+&lt;p&gt;Trying this command with our image from above gives the following. This looks fine, however if we look more closely we'll see that not all white parts have been removed.&lt;/p&gt;
+&lt;div class="container"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-xs-12 col-md-6"&gt;
+      &lt;figure class="figure"&gt;
+        &lt;img src="https://www.nonatomiclabs.com/blog/2018/02/23/logo-transparent1.png" alt="Logo with transparent background" style="padding: 20px; background:rgb(222, 222, 222); border-radius: 5px;"/&gt;
+        &lt;figcaption class="figure-caption"&gt;Logo with transparent background&lt;/figcaption&gt;
+      &lt;/figure&gt;
+    &lt;/div&gt;
+
+    &lt;div class="col-xs-12 col-md-6"&gt;
+      &lt;figure class="figure"&gt;
+        &lt;img class="figure-img img-fluid rounded" src="https://www.nonatomiclabs.com/blog/2018/02/23/logo-transparent1-detail.png" alt="Close-up of the logo with transparent background" style="padding: 20px; background:rgb(222, 222, 222); border-radius: 5px;"/&gt;
+        &lt;figcaption class="figure-caption"&gt;Close-up of the logo&lt;/figcaption&gt;
+      &lt;/figure&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The &lt;code&gt;-fuzz&lt;/code&gt; option can help us here. It simply matches colors that are within &lt;em&gt;x&lt;/em&gt; percents of the intensity of the target color. In most cases, 2% is a reasonable value.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;convert test.png -fuzz 2% -transparent white transparent.png
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Voilà!&lt;/p&gt;
+&lt;div class="container"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-xs-12 col-md-6"&gt;
+      &lt;figure class="figure"&gt;
+        &lt;img src="https://www.nonatomiclabs.com/blog/2018/02/23/logo-transparent2.png" alt="Logo with transparent background" style="padding: 20px; background:rgb(222, 222, 222); border-radius: 5px;"/&gt;
+        &lt;figcaption class="figure-caption"&gt;Logo&lt;/figcaption&gt;
+      &lt;/figure&gt;
+    &lt;/div&gt;
+
+    &lt;div class="col-xs-12 col-md-6"&gt;
+      &lt;figure class="figure"&gt;
+        &lt;img class="figure-img img-fluid rounded" src="https://www.nonatomiclabs.com/blog/2018/02/23/logo-transparent2-detail.png" alt="Close-up of the logo with transparent background" style="padding: 20px; background:rgb(222, 222, 222); border-radius: 5px;"/&gt;
+        &lt;figcaption class="figure-caption"&gt;Close-up&lt;/figcaption&gt;
+      &lt;/figure&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</content><category term="Image Processing"></category></entry></feed>

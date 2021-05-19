@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>How Is Swift Changing the Way We Learn Programming? — nonatomic.blog</title>
+    <meta name="description" content="Title: How Is Swift Changing the Way We Learn Programming?; Date: 2015-02-09; Author: Jean Cruypenynck">
+    <meta name="author" content="Jean Cruypenynck">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://www.nonatomiclabs.com/theme/css/ipython.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://www.nonatomiclabs.com/theme/css/local.css" rel="stylesheet">
+    <link href="https://www.nonatomiclabs.com/theme/css/pygments.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu+Mono' rel='stylesheet' type='text/css'> </head>
+
+<body>
+    <div class="container">
+        <div class="page-header">
+            <a class="fa fa-github fa-2x" style="float: right; margin-top: 10px; margin-right: 2%; font-size: 4vmin; color:black;" href="http://github.com/nonatomiclabs" target="_blank"></a>
+            <a class="fa fa-twitter fa-2x" style="float: right; margin-top: 10px; margin-right: 2%; font-size: 4vmin; color: rgb(85, 172, 238);" href="http://twitter.com/nonatomiclabs" target="_blank"></a>
+            <h2><a style="float: right; margin-top: 15px; margin-right: 7%;" href="/pages/about.html">About</a></h2>
+            <h1><a href="https://www.nonatomiclabs.com/">nonatomic.blog</a>
+			<br>            <p class="subtitle">Written by Jean Cruypenynck</p>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+    <div class="text-center article-header">
+        <h1 itemprop="name headline" class="article-title">How Is Swift Changing the Way We Learn Programming?</h1>
+        <time datetime="2015-02-09T00:00:00+01:00" itemprop="datePublished">February 09, 2015</time>
+    </div>
+    <div>
+        Category:
+        <span itemprop="articleSection">
+			<a href="https://www.nonatomiclabs.com/category/swift.html" rel="category">Swift</a>
+		</span>
+    </div>
+     <div itemprop="articleBody" class="article-body"><p><em>Swift</em>, the new programming language introduced by Apple eight months ago and which already reached the 25th rank of the most used languages list according to <a href="http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html">TIOBE’s index</a>, might be more important than expected for worldwide developer’s community.</p>
+<p><img alt="Swift logo" src="https://www.nonatomiclabs.com/blog/2015/02/09/swift-logo.png" /></p>
+<p>Every programmer first looking at a Swift program should be able to understand its logic, firstly because Swift is highly readable but above all because <em>Swift is not a total revolution</em>! Yes, it does introduce new concepts and keywords but it does not change things radically.
+You can find in Swift a wide common background with almost every object-oriented language like variables, conditions, functions, objects, classes, methods, etc.</p>
+<p>As Python, Swift was created with simplicity in mind but is, according to benchmarks, more efficient than its predecessor. Anyway, the debate <em>Python VS Swift</em> is not really interesting because both are not designed for same platforms, Swift being totally dedicated to iOS/OS X.</p>
+<p><img alt="Benchmark of Swift performances" src="https://www.nonatomiclabs.com/blog/2015/02/09/swift-performances.png" /></p>
+<p>For me, the first big breakup that Swift creates with previous C-inspired languages is by not being a superset of it, meaning that <em>you can’t compile C code in a Swift project</em> as you could do in C++ or Objective-C for example. Backward compatibility with C, as in every area, is both a good and bad thing; by abandoning C, Swift allows us to start on good foundation.</p>
+<p>Swift introduces ease of use for a programmer coming from low-level programming languages as C, but stays highly safe. Safety is, without any doubt, one of the best word to describe Swift.
+For exemple, types of variables in Swift are inferred during compilation; we just use the keyword <code>var</code> to declare any variable, like in JavaScript. However, unlike JavaScript, Swift allows only one type to be stored in a variable, insuring stable program execution.</p>
+<p>Often described as a simple language to have fun with, Swift can not be reduced to that.
+Swift provides extremely fast compilation and can handle big amount of data without any problem as it is actually perfect to try a few lines of code too. The mecanism introduced with <em>Playgrounds</em>, defined as “a place where people can play”, is really a welcome function which allows to test some code without hundreds of configuration parameters and files.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Traditional &quot;Hello, world!&quot; program in Swift</span>
+<span class="bp">println</span><span class="p">(</span><span class="s">&quot;Hello, world!&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1">// Simplest way to use a string!</span>
+<span class="kd">var</span> <span class="nv">name</span> <span class="p">=</span> <span class="s">&quot;Swift&quot;</span>
+<span class="bp">println</span><span class="p">(</span><span class="s">&quot;Hello, </span><span class="si">\(</span><span class="n">name</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>As a student often exposed to IT and especially programming, it’s been some years that I am wondering how will programming be taught in the future.
+Without really becoming more complex, languages now involve a higher level of abstraction and handle some basic operations for us; we do not have to write functions to create a window, handle keyboard, etc. Instead of this, we have to develop in the framework already provided.
+I think we are in a transition period between a inevitable education about low-level computer functionalities and a future world in which people will either work in high-level programming or in conception of low-level links between hardware and software; we have to accept that we can not anymore have a whole knowledge in IT.</p>
+<p>Another interesting point is that, as shown amongst others by introduction of M7 motion coprocessor by Apple in iPhone 5S, industry slowly comes back to a CISC architecture, opposed to the current RISC one, meaning concretely communication capabilities between different classic elements (sound card, GPS, etc.) without necessarily going through the CPU runtime.
+We can then think that future of programming will be about specialization in one field, as complex as many fields before.</p>
+<p>Eventally, even if Swift will probably never be available on other platforms than iOS and OS X, it opens a new way to define what programming languages will look like tomorrow, based on ease and efficiency with both quick playgrounds and bigger programs, all with a simpler syntax without any compromise about safety.</p></div>
+    <hr>
+    <h2>Comments</h2> <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="nonatomiclabs">Tweet</a>
+<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+ <div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_shortname = 'nonatomic.blog';
+var disqus_title = 'How Is Swift Changing the Way We Learn Programming?';
+
+(function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = "https://' + disqus_shortname + '.disqus.com/embed.js";
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            </div>
+        </div>         <!-- <hr> -->
+    </div>
+    <!-- /container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center center-block aw-bottom">
+                <p>&copy; Jean Cruypenynck 2015&mdash;2020</p>
+            </div>
+        </div>
+    </div>
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $("div.collapseheader").click(function() {
+            $header = $(this).children("span").first();
+            $codearea = $(this).children(".input_area");
+            $codearea.slideToggle(500, function() {
+                $header.text(function() {
+                    return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
+                });
+            });
+        });
+    });
+    </script>
+<script>
+(function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+ga('create', 'UA-64506480-3', 'auto');
+ga('send', 'pageview');
+</script>
+ </body>
+
+</html>

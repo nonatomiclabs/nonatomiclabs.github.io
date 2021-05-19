@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>nonatomic.blog - Linux</title><link href="https://www.nonatomiclabs.com/" rel="alternate"></link><link href="https://www.nonatomiclabs.com/feeds/linux.atom.xml" rel="self"></link><id>https://www.nonatomiclabs.com/</id><updated>2016-12-03T15:56:00+01:00</updated><entry><title>Netflix's VMAF in a Travis CI Pipeline With Docker</title><link href="https://www.nonatomiclabs.com/blog/2016/12/03/netflixs-vmaf-in-a-travis-ci-pipeline-with-docker.html" rel="alternate"></link><published>2016-12-03T15:56:00+01:00</published><updated>2016-12-03T15:56:00+01:00</updated><author><name>Jean Cruypenynck</name></author><id>tag:www.nonatomiclabs.com,2016-12-03:/blog/2016/12/03/netflixs-vmaf-in-a-travis-ci-pipeline-with-docker.html</id><summary type="html">&lt;p&gt;A shrinked version of Netflix's VMAF Docker image to run easily in your CI pipeline&lt;/p&gt;</summary><content type="html">&lt;h1&gt;The VMAF quality metric&lt;/h1&gt;
+&lt;p&gt;My main project currently is about improving certain points of the x265 implementation of the HEVC encoder.&lt;br /&gt;
+Therefore, quality metrics are particularly important (and even more given that my improvements target only constant bitrate mode).&lt;br /&gt;
+After reading &lt;a href="http://techblog.netflix.com/2016/06/toward-practical-perceptual-video.html"&gt;this&lt;/a&gt; article from Netflix's techblog about their new VMAF quality metric, I decided to give it a try.&lt;/p&gt;
+&lt;p&gt;The great thing is that, thanks to &lt;a href="https://github.com/Netflix/vmaf/pull/33"&gt;Leandro Moreira&lt;/a&gt; (who actually recently wrote a nice &lt;a href="https://leandromoreira.com.br/2016/10/09/how-to-measure-video-quality-perception"&gt;article&lt;/a&gt; article about video quality metrics), &lt;a href="https://github.com/Netflix/vmaf/blob/master/Dockerfile"&gt;there&lt;/a&gt; is a Dockerfile for the project.&lt;/p&gt;
+&lt;p&gt;However, the Dockerfile installs dependencies for each and every one feature of the project, resulting in a Docker image of over 3GB.&lt;br /&gt;
+With the help of my one-liner to get the download size of a package prior to downloading it published &lt;a href="https://www.nonatomiclabs.com/blog/2016/11/23/know-the-size-of-an-ubuntu-package-prior-to-downloading-it.html"&gt;recently&lt;/a&gt;, I could identify which packages take most of the space (namely &lt;code&gt;python-pandas&lt;/code&gt; and &lt;code&gt;python-sympy&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;So I created a new version of the Docker image, which packs only the stuff necessary to compute the VMAF. It now weighs around 1GB and you can find on Docker hub at &lt;a href="https://hub.docker.com/r/nonatomiclabs/vmaf/"&gt;this address&lt;/a&gt;! 🎉&lt;/p&gt;
+&lt;h1&gt;Use it in your Travis CI pipeline&lt;/h1&gt;
+&lt;p&gt;You can use my lighter VMAF image in your Travis CI pipeline by applying the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Enable Docker in your Travis build, by adding those lines to your Docker file (see the &lt;a href="https://docs.travis-ci.com/user/docker/"&gt;docs&lt;/a&gt; for more details)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;required&lt;/span&gt;
+&lt;span class="n"&gt;services&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+  &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;docker&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pull the VMAF Docker image in the &lt;code&gt;before_install&lt;/code&gt; or &lt;code&gt;install&lt;/code&gt; step&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;before_install:
+  - docker pull nonatomiclabs/vmaf:1.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Run the Docker image&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;docker run --rm -v /folder/with/video/resources:/tmp nonatomiclabs/vmaf:1.0 run_vmaf yuv420p 1920x1080 /tmp/ref.yuv /tmp/comp.yuv --out-fmt json
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Enjoy!&lt;/p&gt;</content><category term="Linux"></category></entry><entry><title>Know the Size of an Ubuntu Package Prior to Downloading It</title><link href="https://www.nonatomiclabs.com/blog/2016/11/23/know-the-size-of-an-ubuntu-package-prior-to-downloading-it.html" rel="alternate"></link><published>2016-11-23T22:20:00+01:00</published><updated>2016-11-23T22:20:00+01:00</updated><author><name>Jean Cruypenynck</name></author><id>tag:www.nonatomiclabs.com,2016-11-23:/blog/2016/11/23/know-the-size-of-an-ubuntu-package-prior-to-downloading-it.html</id><summary type="html">&lt;p&gt;Have you ever wanted to know the amount of data which will be downloaded when you install a package with &lt;code&gt;apt-get&lt;/code&gt;?&lt;/p&gt;</summary><content type="html">&lt;p&gt;Have you ever wanted to know the amount of data which will be downloaded when you install a package with &lt;code&gt;apt-get&lt;/code&gt;?&lt;br /&gt;
+Or the amount of data the installation will take?&lt;br /&gt;
+Or you install a list of packages so that the total install size gets quite huge and you want to know which package is to be blamed?&lt;br /&gt;
+You are lucky, &lt;code&gt;apt&lt;/code&gt; has got you covered!&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;gt; apt-cache show --no-all-versions &amp;lt;pkg name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This is the only command you have to run. The output looks like the following:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Package: git
+Priority: optional
+Section: vcs
+Installed-Size: &lt;span class="m"&gt;23484&lt;/span&gt;
+Maintainer: Ubuntu Developers &amp;lt;ubuntu-devel-discuss@lists.ubuntu.com&amp;gt;
+Original-Maintainer: Gerrit Pape &amp;lt;pape@smarden.org&amp;gt;
+Architecture: amd64
+Version: &lt;span class="m"&gt;1&lt;/span&gt;:2.7.4-0ubuntu1
+Replaces: git-core &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;lt;&amp;lt; 1:1&lt;/span&gt;.7.0.4-1.&lt;span class="o"&gt;)&lt;/span&gt;, gitweb &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;lt;&amp;lt; 1:1&lt;/span&gt;.7.4~rc1&lt;span class="o"&gt;)&lt;/span&gt;
+Provides: git-completion, git-core
+Depends: libc6 &lt;span class="o"&gt;(&lt;/span&gt;&amp;gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;.16&lt;span class="o"&gt;)&lt;/span&gt;, libcurl3-gnutls &lt;span class="o"&gt;(&lt;/span&gt;&amp;gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;7&lt;/span&gt;.16.2&lt;span class="o"&gt;)&lt;/span&gt;, libexpat1 &lt;span class="o"&gt;(&lt;/span&gt;&amp;gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;.0.1&lt;span class="o"&gt;)&lt;/span&gt;, libpcre3, zlib1g &lt;span class="o"&gt;(&lt;/span&gt;&amp;gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;:1.2.0&lt;span class="o"&gt;)&lt;/span&gt;, perl-modules, liberror-perl, git-man &lt;span class="o"&gt;(&lt;/span&gt;&amp;gt;&amp;gt; &lt;span class="m"&gt;1&lt;/span&gt;:2.7.4&lt;span class="o"&gt;)&lt;/span&gt;, git-man &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;lt;&amp;lt; 1:2.7.4-.)&lt;/span&gt;
+&lt;span class="s"&gt;Recommends: patch, less, rsync, ssh-client&lt;/span&gt;
+&lt;span class="s"&gt;Suggests: gettext-base, git-daemon-run | git-daemon-sysvinit, git-doc, git-el, git-email, git-gui, gitk, gitweb, git-arch, git-cvs, git-mediawiki, git-svn&lt;/span&gt;
+&lt;span class="s"&gt;Breaks: bash-completion (&amp;lt;&amp;lt; 1&lt;/span&gt;:1.90-1&lt;span class="o"&gt;)&lt;/span&gt;, cogito &lt;span class="o"&gt;(&lt;/span&gt;&amp;lt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;.18.2+&lt;span class="o"&gt;)&lt;/span&gt;, git-buildpackage &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;lt;&amp;lt; 0.6.5), git-core (&amp;lt;&amp;lt; 1:1.7.0&lt;/span&gt;.4-1.&lt;span class="o"&gt;)&lt;/span&gt;, gitosis &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;lt;&amp;lt; 0.2+20&lt;/span&gt;&lt;span class="m"&gt;090917&lt;/span&gt;-7&lt;span class="o"&gt;)&lt;/span&gt;, gitpkg &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;lt;&amp;lt; 0.15), gitweb (&amp;lt;&amp;lt; 1:1.7.4~rc1), guilt (&amp;lt;&amp;lt; 0&lt;/span&gt;.33&lt;span class="o"&gt;)&lt;/span&gt;, stgit &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;lt;&amp;lt; 0.15), stgit-contrib (&amp;lt;&amp;lt; 0&lt;/span&gt;.15&lt;span class="o"&gt;)&lt;/span&gt;
+Filename: pool/main/g/git/git_2.7.4-0ubuntu1_amd64.deb
+Size: &lt;span class="m"&gt;3006120&lt;/span&gt;
+MD5sum: 0412535c34d3f900629e9409ad73aead
+SHA1: 87888d183e279e53035587cc2c42d16c6a06612f
+SHA256: 8189c2dfe9ae6f3dc00c4cf858acbc53ba99a11d62646b2b7c62af9acb5076cd
+Description: fast, scalable, distributed revision control system
+Description-md5: c1f968556452a190fe359bffd151c012
+Multi-Arch: foreign
+Homepage: https://git-scm.com/
+Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+Origin: Ubuntu
+Supported: 5y
+Task: cloud-image, server
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;There are two interesting lines for us in this output :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Installed-Size: 23484&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Size: 3006120&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;Size&lt;/code&gt; corresponds to the download size while &lt;code&gt;Installed-Size&lt;/code&gt; corresponds to the space the package will take after being installed. Both are in bytes.&lt;/p&gt;
+&lt;p&gt;If you want to see the size in human format and that you are on Ubuntu 14.04 or greater, you can use the &lt;code&gt;apt&lt;/code&gt; command instead of &lt;code&gt;apt-cache&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The main problem with this command however is that it does not take into account the dependencies of the package we want to install.&lt;/p&gt;
+&lt;p&gt;That's where &lt;code&gt;awk&lt;/code&gt; can help us. We can run the following command to get the list of new packages to be installed when running &lt;code&gt;apt-get install &amp;lt;pkg name&amp;gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;gt; apt-get install --dry-run git &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;BEGIN { ORS=&amp;quot; &amp;quot; }; $1 == &amp;quot;Inst&amp;quot; {print $2}&amp;#39;&lt;/span&gt;
+libatm1 libmnl0 libpopt0 libgdbm3 libxau6 libxdmcp6 libxcb1 libx11-data libx11-6 libxext6 perl-modules-5.22 libperl5.22 perl iproute2 ifupdown libisc-export160 libdns-export162 isc-dhcp-client isc-dhcp-common less libbsd0 libexpat1 libffi6 libgmp10 libnettle6 libhogweed4 libidn11 libp11-kit0 libtasn1-6 libgnutls30 libsqlite3-0 libssl1.0.0 libxtables11 netbase openssl ca-certificates krb5-locales libroken18-heimdal libasn1-8-heimdal libkrb5support0 libk5crypto3 libkeyutils1 libkrb5-3 libgssapi-krb5-2 libhcrypto4-heimdal libheimbase1-heimdal libwind0-heimdal libhx509-5-heimdal libkrb5-26-heimdal libheimntlm0-heimdal libgssapi3-heimdal libsasl2-modules-db libsasl2-2 libldap-2.4-2 librtmp1 libcurl3-gnutls libedit2 libsasl2-modules libxmuu1 openssh-client rsync xauth liberror-perl git-man git patch rename
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;If we pass the output of this command to &lt;code&gt;apt-cache&lt;/code&gt; and filter the output with &lt;code&gt;awk&lt;/code&gt; again, we get the total download size:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;gt; apt-cache --no-all-versions show &lt;span class="k"&gt;$(&lt;/span&gt;apt-get install --dry-run git &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;BEGIN { ORS=&amp;quot; &amp;quot; }; $1 == &amp;quot;Inst&amp;quot; {print $2}&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;$1 == &amp;quot;Size:&amp;quot; {total += $2}; END {printf(&amp;quot;%.2f MB\n&amp;quot;, total / (1024^2)) }&amp;#39;&lt;/span&gt;
+&lt;span class="m"&gt;18&lt;/span&gt;.30 MB
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Et voilà! That's it for this small trick (other answers to this question can be found &lt;a href="http://askubuntu.com/questions/35956/how-to-determine-the-size-of-a-package-while-using-apt-prior-to-downloading"&gt;there&lt;/a&gt;). Unfortunately it seems that it is impossible to do the same with Brew yet but let's wait and see.&lt;/p&gt;</content><category term="Linux"></category></entry></feed>

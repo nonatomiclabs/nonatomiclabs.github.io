@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Know the Size of an Ubuntu Package Prior to Downloading It — nonatomic.blog</title>
+    <meta name="description" content="Title: Know the Size of an Ubuntu Package Prior to Downloading It; Date: 2016-11-23; Author: Jean Cruypenynck">
+    <meta name="author" content="Jean Cruypenynck">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://www.nonatomiclabs.com/theme/css/ipython.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://www.nonatomiclabs.com/theme/css/local.css" rel="stylesheet">
+    <link href="https://www.nonatomiclabs.com/theme/css/pygments.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu+Mono' rel='stylesheet' type='text/css'> </head>
+
+<body>
+    <div class="container">
+        <div class="page-header">
+            <a class="fa fa-github fa-2x" style="float: right; margin-top: 10px; margin-right: 2%; font-size: 4vmin; color:black;" href="http://github.com/nonatomiclabs" target="_blank"></a>
+            <a class="fa fa-twitter fa-2x" style="float: right; margin-top: 10px; margin-right: 2%; font-size: 4vmin; color: rgb(85, 172, 238);" href="http://twitter.com/nonatomiclabs" target="_blank"></a>
+            <h2><a style="float: right; margin-top: 15px; margin-right: 7%;" href="/pages/about.html">About</a></h2>
+            <h1><a href="https://www.nonatomiclabs.com/">nonatomic.blog</a>
+			<br>            <p class="subtitle">Written by Jean Cruypenynck</p>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+    <div class="text-center article-header">
+        <h1 itemprop="name headline" class="article-title">Know the Size of an Ubuntu Package Prior to Downloading It</h1>
+        <time datetime="2016-11-23T22:20:00+01:00" itemprop="datePublished">November 23, 2016</time>
+    </div>
+    <div>
+        Category:
+        <span itemprop="articleSection">
+			<a href="https://www.nonatomiclabs.com/category/linux.html" rel="category">Linux</a>
+		</span>
+    </div>
+     <div itemprop="articleBody" class="article-body"><p>Have you ever wanted to know the amount of data which will be downloaded when you install a package with <code>apt-get</code>?<br />
+Or the amount of data the installation will take?<br />
+Or you install a list of packages so that the total install size gets quite huge and you want to know which package is to be blamed?<br />
+You are lucky, <code>apt</code> has got you covered!</p>
+<div class="highlight"><pre><span></span><code>&gt; apt-cache show --no-all-versions &lt;pkg name&gt;
+</code></pre></div>
+
+<p>This is the only command you have to run. The output looks like the following:</p>
+<div class="highlight"><pre><span></span><code>Package: git
+Priority: optional
+Section: vcs
+Installed-Size: <span class="m">23484</span>
+Maintainer: Ubuntu Developers &lt;ubuntu-devel-discuss@lists.ubuntu.com&gt;
+Original-Maintainer: Gerrit Pape &lt;pape@smarden.org&gt;
+Architecture: amd64
+Version: <span class="m">1</span>:2.7.4-0ubuntu1
+Replaces: git-core <span class="o">(</span><span class="s">&lt;&lt; 1:1</span>.7.0.4-1.<span class="o">)</span>, gitweb <span class="o">(</span><span class="s">&lt;&lt; 1:1</span>.7.4~rc1<span class="o">)</span>
+Provides: git-completion, git-core
+Depends: libc6 <span class="o">(</span>&gt;<span class="o">=</span> <span class="m">2</span>.16<span class="o">)</span>, libcurl3-gnutls <span class="o">(</span>&gt;<span class="o">=</span> <span class="m">7</span>.16.2<span class="o">)</span>, libexpat1 <span class="o">(</span>&gt;<span class="o">=</span> <span class="m">2</span>.0.1<span class="o">)</span>, libpcre3, zlib1g <span class="o">(</span>&gt;<span class="o">=</span> <span class="m">1</span>:1.2.0<span class="o">)</span>, perl-modules, liberror-perl, git-man <span class="o">(</span>&gt;&gt; <span class="m">1</span>:2.7.4<span class="o">)</span>, git-man <span class="o">(</span><span class="s">&lt;&lt; 1:2.7.4-.)</span>
+<span class="s">Recommends: patch, less, rsync, ssh-client</span>
+<span class="s">Suggests: gettext-base, git-daemon-run | git-daemon-sysvinit, git-doc, git-el, git-email, git-gui, gitk, gitweb, git-arch, git-cvs, git-mediawiki, git-svn</span>
+<span class="s">Breaks: bash-completion (&lt;&lt; 1</span>:1.90-1<span class="o">)</span>, cogito <span class="o">(</span>&lt;<span class="o">=</span> <span class="m">0</span>.18.2+<span class="o">)</span>, git-buildpackage <span class="o">(</span><span class="s">&lt;&lt; 0.6.5), git-core (&lt;&lt; 1:1.7.0</span>.4-1.<span class="o">)</span>, gitosis <span class="o">(</span><span class="s">&lt;&lt; 0.2+20</span><span class="m">090917</span>-7<span class="o">)</span>, gitpkg <span class="o">(</span><span class="s">&lt;&lt; 0.15), gitweb (&lt;&lt; 1:1.7.4~rc1), guilt (&lt;&lt; 0</span>.33<span class="o">)</span>, stgit <span class="o">(</span><span class="s">&lt;&lt; 0.15), stgit-contrib (&lt;&lt; 0</span>.15<span class="o">)</span>
+Filename: pool/main/g/git/git_2.7.4-0ubuntu1_amd64.deb
+Size: <span class="m">3006120</span>
+MD5sum: 0412535c34d3f900629e9409ad73aead
+SHA1: 87888d183e279e53035587cc2c42d16c6a06612f
+SHA256: 8189c2dfe9ae6f3dc00c4cf858acbc53ba99a11d62646b2b7c62af9acb5076cd
+Description: fast, scalable, distributed revision control system
+Description-md5: c1f968556452a190fe359bffd151c012
+Multi-Arch: foreign
+Homepage: https://git-scm.com/
+Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+Origin: Ubuntu
+Supported: 5y
+Task: cloud-image, server
+</code></pre></div>
+
+<p>There are two interesting lines for us in this output :</p>
+<ul>
+<li><code>Installed-Size: 23484</code></li>
+<li><code>Size: 3006120</code></li>
+</ul>
+<p><code>Size</code> corresponds to the download size while <code>Installed-Size</code> corresponds to the space the package will take after being installed. Both are in bytes.</p>
+<p>If you want to see the size in human format and that you are on Ubuntu 14.04 or greater, you can use the <code>apt</code> command instead of <code>apt-cache</code>.</p>
+<p>The main problem with this command however is that it does not take into account the dependencies of the package we want to install.</p>
+<p>That's where <code>awk</code> can help us. We can run the following command to get the list of new packages to be installed when running <code>apt-get install &lt;pkg name&gt;</code>:</p>
+<div class="highlight"><pre><span></span><code>&gt; apt-get install --dry-run git <span class="p">|</span> awk <span class="s1">&#39;BEGIN { ORS=&quot; &quot; }; $1 == &quot;Inst&quot; {print $2}&#39;</span>
+libatm1 libmnl0 libpopt0 libgdbm3 libxau6 libxdmcp6 libxcb1 libx11-data libx11-6 libxext6 perl-modules-5.22 libperl5.22 perl iproute2 ifupdown libisc-export160 libdns-export162 isc-dhcp-client isc-dhcp-common less libbsd0 libexpat1 libffi6 libgmp10 libnettle6 libhogweed4 libidn11 libp11-kit0 libtasn1-6 libgnutls30 libsqlite3-0 libssl1.0.0 libxtables11 netbase openssl ca-certificates krb5-locales libroken18-heimdal libasn1-8-heimdal libkrb5support0 libk5crypto3 libkeyutils1 libkrb5-3 libgssapi-krb5-2 libhcrypto4-heimdal libheimbase1-heimdal libwind0-heimdal libhx509-5-heimdal libkrb5-26-heimdal libheimntlm0-heimdal libgssapi3-heimdal libsasl2-modules-db libsasl2-2 libldap-2.4-2 librtmp1 libcurl3-gnutls libedit2 libsasl2-modules libxmuu1 openssh-client rsync xauth liberror-perl git-man git patch rename
+</code></pre></div>
+
+<p>If we pass the output of this command to <code>apt-cache</code> and filter the output with <code>awk</code> again, we get the total download size:</p>
+<div class="highlight"><pre><span></span><code>&gt; apt-cache --no-all-versions show <span class="k">$(</span>apt-get install --dry-run git <span class="p">|</span> awk <span class="s1">&#39;BEGIN { ORS=&quot; &quot; }; $1 == &quot;Inst&quot; {print $2}&#39;</span><span class="k">)</span> <span class="p">|</span> awk <span class="s1">&#39;$1 == &quot;Size:&quot; {total += $2}; END {printf(&quot;%.2f MB\n&quot;, total / (1024^2)) }&#39;</span>
+<span class="m">18</span>.30 MB
+</code></pre></div>
+
+<p>Et voilà! That's it for this small trick (other answers to this question can be found <a href="http://askubuntu.com/questions/35956/how-to-determine-the-size-of-a-package-while-using-apt-prior-to-downloading">there</a>). Unfortunately it seems that it is impossible to do the same with Brew yet but let's wait and see.</p></div>
+    <hr>
+    <h2>Comments</h2> <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="nonatomiclabs">Tweet</a>
+<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+ <div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_shortname = 'nonatomic.blog';
+var disqus_title = 'Know the Size of an Ubuntu Package Prior to Downloading It';
+
+(function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = "https://' + disqus_shortname + '.disqus.com/embed.js";
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            </div>
+        </div>         <!-- <hr> -->
+    </div>
+    <!-- /container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center center-block aw-bottom">
+                <p>&copy; Jean Cruypenynck 2015&mdash;2020</p>
+            </div>
+        </div>
+    </div>
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $("div.collapseheader").click(function() {
+            $header = $(this).children("span").first();
+            $codearea = $(this).children(".input_area");
+            $codearea.slideToggle(500, function() {
+                $header.text(function() {
+                    return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
+                });
+            });
+        });
+    });
+    </script>
+<script>
+(function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+ga('create', 'UA-64506480-3', 'auto');
+ga('send', 'pageview');
+</script>
+ </body>
+
+</html>

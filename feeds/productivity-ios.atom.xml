@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>nonatomic.blog - Productivity, iOS</title><link href="https://www.nonatomiclabs.com/" rel="alternate"></link><link href="https://www.nonatomiclabs.com/feeds/productivity-ios.atom.xml" rel="self"></link><id>https://www.nonatomiclabs.com/</id><updated>2015-09-02T21:20:00+02:00</updated><entry><title>Save Facebook Articles to Pocket</title><link href="https://www.nonatomiclabs.com/blog/2015/09/02/save-facebook-articles-to-pocket.html" rel="alternate"></link><published>2015-09-02T21:20:00+02:00</published><updated>2015-09-02T21:20:00+02:00</updated><author><name>Jean Cruypenynck</name></author><id>tag:www.nonatomiclabs.com,2015-09-02:/blog/2015/09/02/save-facebook-articles-to-pocket.html</id><summary type="html">&lt;p&gt;A simple Workflow to add articles found on Facebook to Pocket.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;&lt;em&gt;One of the most important things in a productivity workflow may be to limit the number of services that you use.&lt;/em&gt;&lt;/strong&gt; Nowadays, the issue is not to find tools, but to stick to the ones that we are already using.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Pocket, one of the best Read-it-Later service" src="https://www.nonatomiclabs.com/blog/2015/09/02/pocket-logo.png" /&gt;&lt;/p&gt;
+&lt;p&gt;To store and read articles, I try to stick to &lt;a href="getpocket.com"&gt;Pocket&lt;/a&gt;. However, in some cases, it is impossible to save an article to Pocket.&lt;/p&gt;
+&lt;p&gt;Especially, when you find an interesting article on Facebook from iPhone that you would like to keep for later, you have two options:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;save it in Facebook;&lt;/li&gt;
+&lt;li&gt;open it in Safari, then send it to Pocket, close the article in Safari and come back to Facebook.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Obviously, the first solution is the easiest in the short-term but as explained in the first lines, it can quickly become a problem to increase the number of platforms that you use.&lt;/p&gt;
+&lt;p&gt;The second solution helps you keeping everything in one place but is much slower.&lt;/p&gt;
+&lt;p&gt;With the &lt;a href="http://www.macstories.net/ios/workflow-1-3-brings-powerful-widget-sync-health-actions-and-more/"&gt;latest release&lt;/a&gt; of the &lt;a href="workflow.is"&gt;Workflow&lt;/a&gt; application and its new Today widget, it became clear that a better solution was possible.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="The steps composing the workflow" src="https://www.nonatomiclabs.com/blog/2015/09/02/screenshot1.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.nonatomiclabs.com/files/Current%20article%20to%20Pocket.wflow"&gt;This&lt;/a&gt; very simple workflow allows you to simplify the process of saving an article from Facebook to Pocket.&lt;/p&gt;
+&lt;p&gt;Therefore, you only have to copy the article URL and launch the workflow from the Notification Center.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="First step to use the workflow" src="https://www.nonatomiclabs.com/blog/2015/09/02/screenshot2.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Second step to use the workflow" src="https://www.nonatomiclabs.com/blog/2015/09/02/screenshot3.png" /&gt;&lt;/p&gt;
+&lt;p&gt;If you liked this workflow or have any idea to improve it, please share your feelings in the comments section!&lt;/p&gt;</content><category term="Productivity, iOS"></category></entry></feed>

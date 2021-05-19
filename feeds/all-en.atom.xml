@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>nonatomic.blog</title><link href="https://www.nonatomiclabs.com/" rel="alternate"></link><link href="https://www.nonatomiclabs.com/feeds/all-en.atom.xml" rel="self"></link><id>https://www.nonatomiclabs.com/</id><updated>2018-02-23T00:00:00+01:00</updated><entry><title>How to Make an Image's Background Transparent?</title><link href="https://www.nonatomiclabs.com/blog/2018/02/23/how-to-make-an-images-background-transparent.html" rel="alternate"></link><published>2018-02-23T00:00:00+01:00</published><updated>2018-02-23T00:00:00+01:00</updated><author><name>Jean Cruypenynck</name></author><id>tag:www.nonatomiclabs.com,2018-02-23:/blog/2018/02/23/how-to-make-an-images-background-transparent.html</id><summary type="html">&lt;p&gt;Learn how to use ImageMagick to adjust an image's background&lt;/p&gt;</summary><content type="html">&lt;p&gt;You probably have already downloaded once an image with a white background, such as this one (the grey area around the logo just serves the purpose of seeing the white background).&lt;/p&gt;
+&lt;figure class="figure"&gt;
+  &lt;img src="https://www.nonatomiclabs.com/blog/2018/02/23/logo-white.png" alt="Logo with white background" style="padding: 20px; background:rgb(222, 222, 222); border-radius: 5px;"/&gt;
+  &lt;figcaption class="figure-caption"&gt;Logo with white background&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;For a number of reasons, one could want to have the same image with a transparent background. Luckily, &lt;a href="http://imagemagick.org/script/index.php"&gt;ImageMagick&lt;/a&gt; has our back covered once more.&lt;/p&gt;
+&lt;p&gt;If you haven't already, install ImageMagick:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;brew update &amp;amp;&amp;amp; brew install imagemagick
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class="alert alert-info" role="alert"&gt;
+  &lt;h4 class="alert-heading"&gt;Info&lt;/h4&gt;
+  Even though installed as &lt;code&gt;imagemagick&lt;/code&gt;, there is no &lt;code&gt;imagemagick&lt;/code&gt; command. Instead, &lt;a href="https://imagemagick.org/script/command-line-tools.php"&gt;many separate commands&lt;/a&gt; are defined for different use cases. Today, we'll use the &lt;code&gt;convert&lt;/code&gt; command.
+&lt;/div&gt;
+
+&lt;p&gt;With ImageMagick installed, the easiest way to remove the white background is to use the following command:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;convert test.png -transparent white transparent.png
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The command is very simple: we pass an input and output files and the &lt;a href="https://imagemagick.org/script/command-line-options.php#transparent"&gt;&lt;code&gt;-transparent&lt;/code&gt; option&lt;/a&gt; is used to select the color we want to make transparent which can be passed as a color name or in hex/RGB format. Of course, you should choose an output format which handles transparency, such as PNG. The input can be in any format though.&lt;/p&gt;
+&lt;p&gt;Trying this command with our image from above gives the following. This looks fine, however if we look more closely we'll see that not all white parts have been removed.&lt;/p&gt;
+&lt;div class="container"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-xs-12 col-md-6"&gt;
+      &lt;figure class="figure"&gt;
+        &lt;img src="https://www.nonatomiclabs.com/blog/2018/02/23/logo-transparent1.png" alt="Logo with transparent background" style="padding: 20px; background:rgb(222, 222, 222); border-radius: 5px;"/&gt;
+        &lt;figcaption class="figure-caption"&gt;Logo with transparent background&lt;/figcaption&gt;
+      &lt;/figure&gt;
+    &lt;/div&gt;
+
+    &lt;div class="col-xs-12 col-md-6"&gt;
+      &lt;figure class="figure"&gt;
+        &lt;img class="figure-img img-fluid rounded" src="https://www.nonatomiclabs.com/blog/2018/02/23/logo-transparent1-detail.png" alt="Close-up of the logo with transparent background" style="padding: 20px; background:rgb(222, 222, 222); border-radius: 5px;"/&gt;
+        &lt;figcaption class="figure-caption"&gt;Close-up of the logo&lt;/figcaption&gt;
+      &lt;/figure&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The &lt;code&gt;-fuzz&lt;/code&gt; option can help us here. It simply matches colors that are within &lt;em&gt;x&lt;/em&gt; percents of the intensity of the target color. In most cases, 2% is a reasonable value.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;convert test.png -fuzz 2% -transparent white transparent.png
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Voilà!&lt;/p&gt;
+&lt;div class="container"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-xs-12 col-md-6"&gt;
+      &lt;figure class="figure"&gt;
+        &lt;img src="https://www.nonatomiclabs.com/blog/2018/02/23/logo-transparent2.png" alt="Logo with transparent background" style="padding: 20px; background:rgb(222, 222, 222); border-radius: 5px;"/&gt;
+        &lt;figcaption class="figure-caption"&gt;Logo&lt;/figcaption&gt;
+      &lt;/figure&gt;
+    &lt;/div&gt;
+
+    &lt;div class="col-xs-12 col-md-6"&gt;
+      &lt;figure class="figure"&gt;
+        &lt;img class="figure-img img-fluid rounded" src="https://www.nonatomiclabs.com/blog/2018/02/23/logo-transparent2-detail.png" alt="Close-up of the logo with transparent background" style="padding: 20px; background:rgb(222, 222, 222); border-radius: 5px;"/&gt;
+        &lt;figcaption class="figure-caption"&gt;Close-up&lt;/figcaption&gt;
+      &lt;/figure&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</content><category term="Image Processing"></category></entry><entry><title>The case of HEIF</title><link href="https://www.nonatomiclabs.com/blog/2018/02/15/the-case-of-heif.html" rel="alternate"></link><published>2018-02-15T00:00:00+01:00</published><updated>2018-02-15T00:00:00+01:00</updated><author><name>Jean Cruypenynck</name></author><id>tag:www.nonatomiclabs.com,2018-02-15:/blog/2018/02/15/the-case-of-heif.html</id><summary type="html">&lt;p&gt;Since Apple released iOS 11, HEIF replaced JPEG. Let's learn a bit more about this successor!&lt;/p&gt;</summary><content type="html">&lt;p&gt;Eight months ago, Craig Federighi was presenting new iOS 11 features, including HEVC and HEIF encoding for all videos and pictures. While HEVC was already a known buzzword at the time, the way he introduced HEIF and the fact that Apple is the only big company publicly using it can make one think that this "HEVC for pictures" was invented by Apple, even though it is not the case. This gave me the idea to write this short article about HEIF.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This article assumes basic knowledge of image compression (common codecs and encoding modes)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img alt="Craig Federighi presenting HEIF to masses" src="https://www.nonatomiclabs.com/blog/2018/02/15/federighi-wwdc-2017.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Some key points about HEIF:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;HEIF (short for High Efficiency Image File Format) is, as its name implies, a &lt;em&gt;file format&lt;/em&gt;. I emphasize that because many people incorrectly think that HEIF is a codec, which it is not.&lt;/li&gt;
+&lt;li&gt;Even though the first time it was presented to the masses (the WWDC 2017) was last year, HEIF started being defined in 2013 and was finalized in 2015.&lt;/li&gt;
+&lt;li&gt;As with HEVC, HEIF was made by the MPEG group and is part of MPEG-H: it is the part 12, whereas HEVC is the part 2 and &lt;a href="https://www.nonatomiclabs.com/blog/2015/06/05/mpeg-h-audio-fitting-every-device.html"&gt;MPEG-H 3D Audio&lt;/a&gt; is part 3.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The following types of images can be stored in an HEIF file:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;images with their corresponding thumbnail&lt;/li&gt;
+&lt;li&gt;image sequences with inter encoding (which is a very interesting point for Live Photos)&lt;/li&gt;
+&lt;li&gt;derived image, a non-destructive edited version of the initial image with support for basic transformations (rotation, cropping, etc.)&lt;/li&gt;
+&lt;li&gt;auxiliary items, including for instance a depth map (which is a very interesting point for the iPhone Plus range)&lt;/li&gt;
+&lt;li&gt;metadata, both EXIF and XMP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We understand easily why Apple decided to adopt HEIF as a replacement for JPEG. Well, replacement might not be the best word here because we didn't tackle the encoding part yet. Inside an HEIF file, images are actually encoded with HEVC or H.264 and thumbnails are encoded in… JPEG!&lt;/p&gt;
+&lt;p&gt;Last but not least, we must mention file extensions. One can notice that macOS gives the "HEIC" extension to all photos. Apple chose that extension to indicate that an HEI&lt;strong&gt;C&lt;/strong&gt; file is an HEIF file containing HEV&lt;strong&gt;C&lt;/strong&gt;-encoded pictures. As for Live Photos, these are stored with the extension "HEICS", where "S" stands for sequence.&lt;/p&gt;
+&lt;p&gt;That's it for today, I hope this post made you understand better the differences between HEVC, HEIF and HEIC!&lt;/p&gt;</content><category term="Codecs"></category></entry><entry><title>Stupid Questions #1: Base64 Encoding</title><link href="https://www.nonatomiclabs.com/blog/2018/02/04/stupid-questions-1-base64-encoding.html" rel="alternate"></link><published>2018-02-04T20:00:00+01:00</published><updated>2018-02-04T20:00:00+01:00</updated><author><name>Jean Cruypenynck</name></author><id>tag:www.nonatomiclabs.com,2018-02-04:/blog/2018/02/04/stupid-questions-1-base64-encoding.html</id><summary type="html">&lt;p&gt;A very short introduction to Base64 Encoding&lt;/p&gt;</summary><content type="html">&lt;div class="alert alert-success" role="alert"&gt;
+  &lt;p style="text-align: justify;"&gt;
+  This post is the first in a new category called "Stupid Questions". These will be short posts, answering questions with a simple but not always obvious answer. These questions are the kind of questions one (me included) could be ashamed to ask because they seem stupid, hence the title of this category!*
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;While reading recently about the new features of Python 3.6, I stumbled upon the &lt;a href="https://docs.python.org/3/library/secrets.html#secrets.token_urlsafe"&gt;documentation&lt;/a&gt; of the brand new &lt;code&gt;secrets&lt;/code&gt; module where we can find this sentence:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The text is Base64 encoded, so on average each byte results in approximately 1.3 characters.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Therefore, the question for today is the following: &lt;em&gt;why does a byte results in 1.3 characters with Base64 encoding?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Put simply, Base64 is just a way to encode binary data as text. Instead of writing 0s and 1s, we write ASCII characters. As the name suggests, the &lt;em&gt;alphabet&lt;/em&gt; used by Base64 consists of 64 symbols.&lt;/p&gt;
+&lt;p&gt;The exact list of symbols varies from one implementation to another, but the idea behind how they are chosen is to have as &lt;em&gt;universal&lt;/em&gt; and &lt;em&gt;printable&lt;/em&gt; data. That decreases the risk of encoding-related data corruption during the transmission of a message, and explains why emails are often Base64-encoded. Thus, most Base64 implementations use &lt;code&gt;A&lt;/code&gt;-&lt;code&gt;Z&lt;/code&gt;, &lt;code&gt;a&lt;/code&gt;-&lt;code&gt;z&lt;/code&gt; and &lt;code&gt;0&lt;/code&gt;-&lt;code&gt;9&lt;/code&gt; as the first 62 values.&lt;/p&gt;
+&lt;p&gt;We now know that Base64 uses 64 symbols and &lt;del&gt;surprisingly&lt;/del&gt; 64 = 2&lt;sup&gt;6&lt;/sup&gt;. Each one of the 64 symbols of Base64 encoding therefore represents a unique combination of 6 bits. Thus, if each character represents 6 bits, 1.3 characters are needed to represent a byte (&lt;em&gt;8&lt;/em&gt; bits)! &lt;em&gt;QED&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Illustration of the Base64 encoding of 2 bytes" src="https://www.nonatomiclabs.com/blog/2018/02/04/base64_encoding.png" /&gt;&lt;/p&gt;</content><category term="Stupid Questions"></category></entry><entry><title>Netflix's VMAF in a Travis CI Pipeline With Docker</title><link href="https://www.nonatomiclabs.com/blog/2016/12/03/netflixs-vmaf-in-a-travis-ci-pipeline-with-docker.html" rel="alternate"></link><published>2016-12-03T15:56:00+01:00</published><updated>2016-12-03T15:56:00+01:00</updated><author><name>Jean Cruypenynck</name></author><id>tag:www.nonatomiclabs.com,2016-12-03:/blog/2016/12/03/netflixs-vmaf-in-a-travis-ci-pipeline-with-docker.html</id><summary type="html">&lt;p&gt;A shrinked version of Netflix's VMAF Docker image to run easily in your CI pipeline&lt;/p&gt;</summary><content type="html">&lt;h1&gt;The VMAF quality metric&lt;/h1&gt;
+&lt;p&gt;My main project currently is about improving certain points of the x265 implementation of the HEVC encoder.&lt;br /&gt;
+Therefore, quality metrics are particularly important (and even more given that my improvements target only constant bitrate mode).&lt;br /&gt;
+After reading &lt;a href="http://techblog.netflix.com/2016/06/toward-practical-perceptual-video.html"&gt;this&lt;/a&gt; article from Netflix's techblog about their new VMAF quality metric, I decided to give it a try.&lt;/p&gt;
+&lt;p&gt;The great thing is that, thanks to &lt;a href="https://github.com/Netflix/vmaf/pull/33"&gt;Leandro Moreira&lt;/a&gt; (who actually recently wrote a nice &lt;a href="https://leandromoreira.com.br/2016/10/09/how-to-measure-video-quality-perception"&gt;article&lt;/a&gt; article about video quality metrics), &lt;a href="https://github.com/Netflix/vmaf/blob/master/Dockerfile"&gt;there&lt;/a&gt; is a Dockerfile for the project.&lt;/p&gt;
+&lt;p&gt;However, the Dockerfile installs dependencies for each and every one feature of the project, resulting in a Docker image of over 3GB.&lt;br /&gt;
+With the help of my one-liner to get the download size of a package prior to downloading it published &lt;a href="https://www.nonatomiclabs.com/blog/2016/11/23/know-the-size-of-an-ubuntu-package-prior-to-downloading-it.html"&gt;recently&lt;/a&gt;, I could identify which packages take most of the space (namely &lt;code&gt;python-pandas&lt;/code&gt; and &lt;code&gt;python-sympy&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;So I created a new version of the Docker image, which packs only the stuff necessary to compute the VMAF. It now weighs around 1GB and you can find on Docker hub at &lt;a href="https://hub.docker.com/r/nonatomiclabs/vmaf/"&gt;this address&lt;/a&gt;! 🎉&lt;/p&gt;
+&lt;h1&gt;Use it in your Travis CI pipeline&lt;/h1&gt;
+&lt;p&gt;You can use my lighter VMAF image in your Travis CI pipeline by applying the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Enable Docker in your Travis build, by adding those lines to your Docker file (see the &lt;a href="https://docs.travis-ci.com/user/docker/"&gt;docs&lt;/a&gt; for more details)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;required&lt;/span&gt;
+&lt;span class="n"&gt;services&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+  &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;docker&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pull the VMAF Docker image in the &lt;code&gt;before_install&lt;/code&gt; or &lt;code&gt;install&lt;/code&gt; step&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;before_install:
+  - docker pull nonatomiclabs/vmaf:1.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Run the Docker image&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;docker run --rm -v /folder/with/video/resources:/tmp nonatomiclabs/vmaf:1.0 run_vmaf yuv420p 1920x1080 /tmp/ref.yuv /tmp/comp.yuv --out-fmt json
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Enjoy!&lt;/p&gt;</content><category term="Linux"></category></entry><entry><title>Know the Size of an Ubuntu Package Prior to Downloading It</title><link href="https://www.nonatomiclabs.com/blog/2016/11/23/know-the-size-of-an-ubuntu-package-prior-to-downloading-it.html" rel="alternate"></link><published>2016-11-23T22:20:00+01:00</published><updated>2016-11-23T22:20:00+01:00</updated><author><name>Jean Cruypenynck</name></author><id>tag:www.nonatomiclabs.com,2016-11-23:/blog/2016/11/23/know-the-size-of-an-ubuntu-package-prior-to-downloading-it.html</id><summary type="html">&lt;p&gt;Have you ever wanted to know the amount of data which will be downloaded when you install a package with &lt;code&gt;apt-get&lt;/code&gt;?&lt;/p&gt;</summary><content type="html">&lt;p&gt;Have you ever wanted to know the amount of data which will be downloaded when you install a package with &lt;code&gt;apt-get&lt;/code&gt;?&lt;br /&gt;
+Or the amount of data the installation will take?&lt;br /&gt;
+Or you install a list of packages so that the total install size gets quite huge and you want to know which package is to be blamed?&lt;br /&gt;
+You are lucky, &lt;code&gt;apt&lt;/code&gt; has got you covered!&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;gt; apt-cache show --no-all-versions &amp;lt;pkg name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This is the only command you have to run. The output looks like the following:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Package: git
+Priority: optional
+Section: vcs
+Installed-Size: &lt;span class="m"&gt;23484&lt;/span&gt;
+Maintainer: Ubuntu Developers &amp;lt;ubuntu-devel-discuss@lists.ubuntu.com&amp;gt;
+Original-Maintainer: Gerrit Pape &amp;lt;pape@smarden.org&amp;gt;
+Architecture: amd64
+Version: &lt;span class="m"&gt;1&lt;/span&gt;:2.7.4-0ubuntu1
+Replaces: git-core &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;lt;&amp;lt; 1:1&lt;/span&gt;.7.0.4-1.&lt;span class="o"&gt;)&lt;/span&gt;, gitweb &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;lt;&amp;lt; 1:1&lt;/span&gt;.7.4~rc1&lt;span class="o"&gt;)&lt;/span&gt;
+Provides: git-completion, git-core
+Depends: libc6 &lt;span class="o"&gt;(&lt;/span&gt;&amp;gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;.16&lt;span class="o"&gt;)&lt;/span&gt;, libcurl3-gnutls &lt;span class="o"&gt;(&lt;/span&gt;&amp;gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;7&lt;/span&gt;.16.2&lt;span class="o"&gt;)&lt;/span&gt;, libexpat1 &lt;span class="o"&gt;(&lt;/span&gt;&amp;gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;.0.1&lt;span class="o"&gt;)&lt;/span&gt;, libpcre3, zlib1g &lt;span class="o"&gt;(&lt;/span&gt;&amp;gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;:1.2.0&lt;span class="o"&gt;)&lt;/span&gt;, perl-modules, liberror-perl, git-man &lt;span class="o"&gt;(&lt;/span&gt;&amp;gt;&amp;gt; &lt;span class="m"&gt;1&lt;/span&gt;:2.7.4&lt;span class="o"&gt;)&lt;/span&gt;, git-man &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;lt;&amp;lt; 1:2.7.4-.)&lt;/span&gt;
+&lt;span class="s"&gt;Recommends: patch, less, rsync, ssh-client&lt;/span&gt;
+&lt;span class="s"&gt;Suggests: gettext-base, git-daemon-run | git-daemon-sysvinit, git-doc, git-el, git-email, git-gui, gitk, gitweb, git-arch, git-cvs, git-mediawiki, git-svn&lt;/span&gt;
+&lt;span class="s"&gt;Breaks: bash-completion (&amp;lt;&amp;lt; 1&lt;/span&gt;:1.90-1&lt;span class="o"&gt;)&lt;/span&gt;, cogito &lt;span class="o"&gt;(&lt;/span&gt;&amp;lt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;.18.2+&lt;span class="o"&gt;)&lt;/span&gt;, git-buildpackage &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;lt;&amp;lt; 0.6.5), git-core (&amp;lt;&amp;lt; 1:1.7.0&lt;/span&gt;.4-1.&lt;span class="o"&gt;)&lt;/span&gt;, gitosis &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;lt;&amp;lt; 0.2+20&lt;/span&gt;&lt;span class="m"&gt;090917&lt;/span&gt;-7&lt;span class="o"&gt;)&lt;/span&gt;, gitpkg &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;lt;&amp;lt; 0.15), gitweb (&amp;lt;&amp;lt; 1:1.7.4~rc1), guilt (&amp;lt;&amp;lt; 0&lt;/span&gt;.33&lt;span class="o"&gt;)&lt;/span&gt;, stgit &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;lt;&amp;lt; 0.15), stgit-contrib (&amp;lt;&amp;lt; 0&lt;/span&gt;.15&lt;span class="o"&gt;)&lt;/span&gt;
+Filename: pool/main/g/git/git_2.7.4-0ubuntu1_amd64.deb
+Size: &lt;span class="m"&gt;3006120&lt;/span&gt;
+MD5sum: 0412535c34d3f900629e9409ad73aead
+SHA1: 87888d183e279e53035587cc2c42d16c6a06612f
+SHA256: 8189c2dfe9ae6f3dc00c4cf858acbc53ba99a11d62646b2b7c62af9acb5076cd
+Description: fast, scalable, distributed revision control system
+Description-md5: c1f968556452a190fe359bffd151c012
+Multi-Arch: foreign
+Homepage: https://git-scm.com/
+Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+Origin: Ubuntu
+Supported: 5y
+Task: cloud-image, server
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;There are two interesting lines for us in this output :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Installed-Size: 23484&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Size: 3006120&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;Size&lt;/code&gt; corresponds to the download size while &lt;code&gt;Installed-Size&lt;/code&gt; corresponds to the space the package will take after being installed. Both are in bytes.&lt;/p&gt;
+&lt;p&gt;If you want to see the size in human format and that you are on Ubuntu 14.04 or greater, you can use the &lt;code&gt;apt&lt;/code&gt; command instead of &lt;code&gt;apt-cache&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The main problem with this command however is that it does not take into account the dependencies of the package we want to install.&lt;/p&gt;
+&lt;p&gt;That's where &lt;code&gt;awk&lt;/code&gt; can help us. We can run the following command to get the list of new packages to be installed when running &lt;code&gt;apt-get install &amp;lt;pkg name&amp;gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;gt; apt-get install --dry-run git &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;BEGIN { ORS=&amp;quot; &amp;quot; }; $1 == &amp;quot;Inst&amp;quot; {print $2}&amp;#39;&lt;/span&gt;
+libatm1 libmnl0 libpopt0 libgdbm3 libxau6 libxdmcp6 libxcb1 libx11-data libx11-6 libxext6 perl-modules-5.22 libperl5.22 perl iproute2 ifupdown libisc-export160 libdns-export162 isc-dhcp-client isc-dhcp-common less libbsd0 libexpat1 libffi6 libgmp10 libnettle6 libhogweed4 libidn11 libp11-kit0 libtasn1-6 libgnutls30 libsqlite3-0 libssl1.0.0 libxtables11 netbase openssl ca-certificates krb5-locales libroken18-heimdal libasn1-8-heimdal libkrb5support0 libk5crypto3 libkeyutils1 libkrb5-3 libgssapi-krb5-2 libhcrypto4-heimdal libheimbase1-heimdal libwind0-heimdal libhx509-5-heimdal libkrb5-26-heimdal libheimntlm0-heimdal libgssapi3-heimdal libsasl2-modules-db libsasl2-2 libldap-2.4-2 librtmp1 libcurl3-gnutls libedit2 libsasl2-modules libxmuu1 openssh-client rsync xauth liberror-perl git-man git patch rename
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;If we pass the output of this command to &lt;code&gt;apt-cache&lt;/code&gt; and filter the output with &lt;code&gt;awk&lt;/code&gt; again, we get the total download size:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;gt; apt-cache --no-all-versions show &lt;span class="k"&gt;$(&lt;/span&gt;apt-get install --dry-run git &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;BEGIN { ORS=&amp;quot; &amp;quot; }; $1 == &amp;quot;Inst&amp;quot; {print $2}&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;$1 == &amp;quot;Size:&amp;quot; {total += $2}; END {printf(&amp;quot;%.2f MB\n&amp;quot;, total / (1024^2)) }&amp;#39;&lt;/span&gt;
+&lt;span class="m"&gt;18&lt;/span&gt;.30 MB
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Et voilà! That's it for this small trick (other answers to this question can be found &lt;a href="http://askubuntu.com/questions/35956/how-to-determine-the-size-of-a-package-while-using-apt-prior-to-downloading"&gt;there&lt;/a&gt;). Unfortunately it seems that it is impossible to do the same with Brew yet but let's wait and see.&lt;/p&gt;</content><category term="Linux"></category></entry><entry><title>Introduction to py.test</title><link href="https://www.nonatomiclabs.com/blog/2015/12/01/introduction-to-pytest.html" rel="alternate"></link><published>2015-12-01T21:20:00+01:00</published><updated>2015-12-01T21:20:00+01:00</updated><author><name>Jean Cruypenynck</name></author><id>tag:www.nonatomiclabs.com,2015-12-01:/blog/2015/12/01/introduction-to-pytest.html</id><summary type="html">&lt;p&gt;&lt;a href="pytest.org"&gt;py.test&lt;/a&gt; is one of the most famous testing package in Python, with limitless configuration options and plenty of plugins to cover all situations.&lt;/p&gt;</summary><content type="html">&lt;p&gt;As part of &lt;a href="http://www.meetup.com/wrocpy/"&gt;wroc.py&lt;/a&gt; #22, the monthly Python meeting in Wrocław, I presented a brief introduction to py.test.&lt;/p&gt;
+&lt;p&gt;&lt;a href="pytest.org"&gt;py.test&lt;/a&gt; is one of the most famous testing package in Python, with limitless configuration options and plenty of plugins to cover all situations.&lt;/p&gt;
+&lt;iframe src="//slides.com/jeancruypenynck/introduction-to-pytest/embed" width="864" height="630" scrolling="no" frameborder="0" 0="webkitallowfullscreen" 1="mozallowfullscreen" 2="allowfullscreen" class="iframe-class"&gt;&lt;/iframe&gt;
+
+&lt;p&gt;In case you would be interested to reproduce the examples showed during this presentation, please visit this GitHub repository or clone it directly with:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone https://github.com/filaton/pytest-intro.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Python"></category></entry><entry><title>Save Facebook Articles to Pocket</title><link href="https://www.nonatomiclabs.com/blog/2015/09/02/save-facebook-articles-to-pocket.html" rel="alternate"></link><published>2015-09-02T21:20:00+02:00</published><updated>2015-09-02T21:20:00+02:00</updated><author><name>Jean Cruypenynck</name></author><id>tag:www.nonatomiclabs.com,2015-09-02:/blog/2015/09/02/save-facebook-articles-to-pocket.html</id><summary type="html">&lt;p&gt;A simple Workflow to add articles found on Facebook to Pocket.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;&lt;em&gt;One of the most important things in a productivity workflow may be to limit the number of services that you use.&lt;/em&gt;&lt;/strong&gt; Nowadays, the issue is not to find tools, but to stick to the ones that we are already using.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Pocket, one of the best Read-it-Later service" src="https://www.nonatomiclabs.com/blog/2015/09/02/pocket-logo.png" /&gt;&lt;/p&gt;
+&lt;p&gt;To store and read articles, I try to stick to &lt;a href="getpocket.com"&gt;Pocket&lt;/a&gt;. However, in some cases, it is impossible to save an article to Pocket.&lt;/p&gt;
+&lt;p&gt;Especially, when you find an interesting article on Facebook from iPhone that you would like to keep for later, you have two options:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;save it in Facebook;&lt;/li&gt;
+&lt;li&gt;open it in Safari, then send it to Pocket, close the article in Safari and come back to Facebook.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Obviously, the first solution is the easiest in the short-term but as explained in the first lines, it can quickly become a problem to increase the number of platforms that you use.&lt;/p&gt;
+&lt;p&gt;The second solution helps you keeping everything in one place but is much slower.&lt;/p&gt;
+&lt;p&gt;With the &lt;a href="http://www.macstories.net/ios/workflow-1-3-brings-powerful-widget-sync-health-actions-and-more/"&gt;latest release&lt;/a&gt; of the &lt;a href="workflow.is"&gt;Workflow&lt;/a&gt; application and its new Today widget, it became clear that a better solution was possible.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="The steps composing the workflow" src="https://www.nonatomiclabs.com/blog/2015/09/02/screenshot1.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.nonatomiclabs.com/files/Current%20article%20to%20Pocket.wflow"&gt;This&lt;/a&gt; very simple workflow allows you to simplify the process of saving an article from Facebook to Pocket.&lt;/p&gt;
+&lt;p&gt;Therefore, you only have to copy the article URL and launch the workflow from the Notification Center.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="First step to use the workflow" src="https://www.nonatomiclabs.com/blog/2015/09/02/screenshot2.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Second step to use the workflow" src="https://www.nonatomiclabs.com/blog/2015/09/02/screenshot3.png" /&gt;&lt;/p&gt;
+&lt;p&gt;If you liked this workflow or have any idea to improve it, please share your feelings in the comments section!&lt;/p&gt;</content><category term="Productivity, iOS"></category></entry><entry><title>Introduction to Travis CI</title><link href="https://www.nonatomiclabs.com/blog/2015/08/06/introduction-to-travis-ci.html" rel="alternate"></link><published>2015-08-06T21:20:00+02:00</published><updated>2015-08-06T21:20:00+02:00</updated><author><name>Jean Cruypenynck</name></author><id>tag:www.nonatomiclabs.com,2015-08-06:/blog/2015/08/06/introduction-to-travis-ci.html</id><summary type="html">&lt;p&gt;&lt;a href="http://travis-ci.org"&gt;Travis CI&lt;/a&gt; provides perfect integration with GitHub and Slack to provide free continuous integration for many languages.&lt;/p&gt;</summary><content type="html">&lt;p&gt;As part of &lt;a href="http://www.meetup.com/wrocpy/"&gt;wroc.py&lt;/a&gt; #18, the monthly Python meeting in Wrocław, I presented a brief introduction to Travis Continuous Integration with GitHub.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://travis-ci.org"&gt;Travis CI&lt;/a&gt; provides perfect integration with GitHub and Slack to provide free continuous integration for many languages.&lt;/p&gt;
+&lt;iframe src="//slides.com/jeancruypenynck/continuous-integration-travis/embed" width="864" height="630" scrolling="no" frameborder="0" 0="webkitallowfullscreen" 1="mozallowfullscreen" 2="allowfullscreen" class="iframe-class"&gt;&lt;/iframe&gt;
+
+&lt;p&gt;In case you would be interested to reproduce the examples showed during this presentation, please visit &lt;a href="https://github.com/filaton/basic_travis"&gt;this&lt;/a&gt; GitHub repository or clone it directly with:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone https://github.com/filaton/basic_travis.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Python"></category></entry><entry><title>Introduction to PyAudio</title><link href="https://www.nonatomiclabs.com/blog/2015/08/06/introduction-to-pyaudio.html" rel="alternate"></link><published>2015-08-06T20:20:00+02:00</published><updated>2015-08-06T20:20:00+02:00</updated><author><name>Jean Cruypenynck</name></author><id>tag:www.nonatomiclabs.com,2015-08-06:/blog/2015/08/06/introduction-to-pyaudio.html</id><summary type="html">&lt;p&gt;&lt;a href="http://people.csail.mit.edu/hubert/pyaudio/"&gt;PyAudio&lt;/a&gt; provides bindings for the famous C library PortAudio and allows playing and recording audio in realtime with Python.&lt;/p&gt;</summary><content type="html">&lt;p&gt;As part of &lt;a href="http://www.meetup.com/wrocpy/"&gt;wroc.py&lt;/a&gt; #18, the monthly Python meeting in Wrocław, I presented a brief introduction to to PyAudio package.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://people.csail.mit.edu/hubert/pyaudio/"&gt;PyAudio&lt;/a&gt; provides bindings for the famous C library PortAudio and allows playing and recording audio in realtime with Python.&lt;/p&gt;
+&lt;iframe src="//slides.com/jeancruypenynck/introduction-to-pyaudio/embed" width="864" height="630" scrolling="no" frameborder="0" 0="webkitallowfullscreen" 1="mozallowfullscreen" 2="allowfullscreen" class="iframe-class"&gt;&lt;/iframe&gt;
+
+&lt;p&gt;In case you would be interested to reproduce the examples showed during this presentation, please visit &lt;a href="https://github.com/filaton/PyAudio-Introduction"&gt;this&lt;/a&gt; GitHub repository or clone it directly with:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git clone https://github.com/filaton/PyAudio-Introduction.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Python"></category></entry><entry><title>MPEG-H Audio: Fitting Every Device</title><link href="https://www.nonatomiclabs.com/blog/2015/06/05/mpeg-h-audio-fitting-every-device.html" rel="alternate"></link><published>2015-06-05T00:00:00+02:00</published><updated>2015-06-05T00:00:00+02:00</updated><author><name>Jean Cruypenynck</name></author><id>tag:www.nonatomiclabs.com,2015-06-05:/blog/2015/06/05/mpeg-h-audio-fitting-every-device.html</id><summary type="html">&lt;p&gt;While "linear" or traditionnal TV is getting stuck because of the expanding variety of media (such as TV, computers, tablets or phones) and new means of consumption, MPEG-H has been defined to be flexible; this is especially true when talking about the audio part of MPEG-H.&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
+&lt;p&gt;This article was originally written in May 2015 for the &lt;a href="http://www.iabmfoundation.org/Awards.aspx"&gt;IABM Engineering Student Awards&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1&gt;Abstract&lt;/h1&gt;
+&lt;p&gt;While "linear" or traditionnal TV is getting stuck because of the expanding variety of media (such as TV, computers, tablets or phones) and new means of consumption, MPEG-H has been defined to be flexible; this is especially true when talking about the audio part of MPEG-H.&lt;/p&gt;
+&lt;h1&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;Born in 2013, MPEG-H is the successor of MPEG-4. Still under development, it has yet got its main standards: "MPEG Media Transport", "High Efficiency Video Coding" and "3D Audio". These three first parts (formerly known as "Systems", "Video", and "Audio" in MPEG-2 and MPEG-4) constitute the core of MPEG-H. Widely known for its video part (H.265/HEVC), MPEG-H defines nevertheless a very interesting audio part. Three main audiovisual stakeholders, to wit &lt;em&gt;Fraunhofer IIS&lt;/em&gt;, &lt;em&gt;Technicolor&lt;/em&gt; and &lt;em&gt;Qualcomm&lt;/em&gt; form the "MPEG-H Audio Alliance", responsible for this part.&lt;/p&gt;
+&lt;h1&gt;1. Object-oriented audio&lt;/h1&gt;
+&lt;p&gt;Let us consider a usual audio broadcasting framework, composed of three parts:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Recording, either capturing or creating audio information.&lt;/li&gt;
+&lt;li&gt;Channel transporting the recorded information with an efficient representation.&lt;/li&gt;
+&lt;li&gt;Playback re-creating the original information.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Traditionally, when working with multichannel audio, we try to match the number and position of microphones for the recording and channels for the playback.&lt;br /&gt;
+It means that we have to provide as many different mixes as there are different configurations. This way of thinking worked until now with mono, stereo and 5.1 signals but does not really suit the new needs of the audiovisual industry in this day and age: flexibility, mobility, immersion.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Traditional audio framework" src="https://www.nonatomiclabs.com/blog/2015/06/05/traditional-framework.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Here comes the &lt;em&gt;object-oriented audio&lt;/em&gt; which, instead of working with channels, uses entities (as soundscape, commentary, sound FX, music, etc.).&lt;br /&gt;
+The sound mixer creates only one mix by placing these entities in a 3D soundfield.&lt;br /&gt;
+Then, these entities can be sent in the channel as data and position metadata.&lt;br /&gt;
+Finally, the original audio can be re-created "easily" by remapping the objects in our given 3D audio soundfield.&lt;/p&gt;
+&lt;p&gt;There are some direct advantages coming from this method:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Suitable to any configuration: knowing the number and the position of the loudspeakers, the decoder can decide where to map an object to render it at the best position.&lt;/li&gt;
+&lt;li&gt;Allows easy re-mixing: as objects in the audio streams are intended to correspond to real-life objects (for instance, commentary and ambience in a sport event), viewer can adjust their own sound level with ease.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Nonetheless, one can quickly understand the issues tackled by this method:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Sound scenes are often composed by an ambience and not only small and well-located objects.&lt;br /&gt;
+Consequently, this ambience should be represented in a channel-dependent format and creates what is called the "bed" on which different objects go.&lt;/li&gt;
+&lt;li&gt;If object-oriented concept works well for a relatively low number of objects, it is impossible to apply and become counterproductive with highly complex signals.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;An intermediate approach between channel-based solutions (with a high coupling between the &lt;em&gt;recording&lt;/em&gt; and &lt;em&gt;playback&lt;/em&gt; parts, but low complexity) and object-based solutions (with good decoupling, but high complexity) should be found.&lt;/p&gt;
+&lt;h1&gt;2. High-Order Ambisonics&lt;/h1&gt;
+&lt;p&gt;Invented in the UK in the early 1970s, ambisonics is a surround-sound technique which consists of giving a speaker-independent representation of a soundfield. This representation, also called &lt;em&gt;B-format&lt;/em&gt; is then decoded to any specific speaker setup.&lt;/p&gt;
+&lt;p&gt;At a given point &lt;span class="math"&gt;\(M\left(r,\theta,\varphi\right)\)&lt;/span&gt; of a 3D space, ambisonics give us the following equation defining the sound pressure:&lt;/p&gt;
+&lt;div class="math"&gt;$$\left[\sum_{n=0}^{N}j_n\left(kr\right)\sum_{m=-n}{n}a^m_n\left(t\right)Y^m_n\left(\theta,\varphi\right)\right]\mathrm{e}^{\mathrm{j}\varphi}\xrightarrow[N \to +\infty]{}p\left(r,\theta,\varphi,t\right)$$&lt;/div&gt;
+&lt;p&gt;where:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(j_n\left(kr\right)\)&lt;/span&gt; is a Bessel function of the first kind;&lt;/li&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(Y^m_n\left(\theta,\varphi\right)\)&lt;/span&gt; is the function giving the spherical harmonics;&lt;/li&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(N\)&lt;/span&gt; is the "order" of the ambisonics, which determines the accuracy of restitution of the soundfield and the number of ambisonic coefficients which is &lt;span class="math"&gt;\(\left(N+1\right)^2\)&lt;/span&gt;. In practice, &lt;span class="math"&gt;\(N\geq 3\)&lt;/span&gt; gives a good perception and is called in this case "high-order ambisonics" (HOA).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As technology did not enable real-time computation of HOA when it was created, we now have enough power to go until 4th-order.&lt;br /&gt;
+Considering the 4th-order, it would give us 25 coefficients and by extension, 25 PCM 48kHz signals (if we consider sampling the soundfield at the usual 48kHz frequency).&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Spherical harmonics up to degree 3 (source Wikipedia)" src="ambisonics.png" /&gt;&lt;/p&gt;
+&lt;p&gt;However, these 25 signals are often highly correlated and allow a reduction to 6 PCM channels and some metadata, which can then optionally go through the MPEG-H compression engine.&lt;/p&gt;
+&lt;h1&gt;3. MPEG-H&lt;/h1&gt;
+&lt;p&gt;Hence, MPEG-H Audio "only" gathers the previous parts together. In fact, MPEG-H Audio allows to work with HOA, audio objects and traditional audio, together.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="MPEG-H audiovisual framework" src="mpegh-framework.png" /&gt;&lt;/p&gt;
+&lt;p&gt;We can imagine the following scenarios or use cases, as described in the following figures:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Broadcast workflow" src="broadcast-workflow.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Movie workflow" src="movie-workflow.png" /&gt;&lt;/p&gt;
+&lt;h1&gt;Conclusion&lt;/h1&gt;
+&lt;p&gt;We covered through this paper main aspects of the multichannel audio part of MPEG-H, which seems to answer most of the expectations of the current broadcast industry and to stay flexible enough to stay the standard during a long time. MPEG-H Audio is now ratified by DVB, ATSC 3.0 and Internet streaming, even though Youtube uses with its VP9 another multichannel audio codec: &lt;em&gt;Opus&lt;/em&gt;.
+Aside from the audio part, the two first parts of MPEG-H also show that it stands by itself as the new top-notch codec for the broadcast industry.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.nonatomiclabs.com/download/MPEG-H Audio - Fitting Every Device.pdf"&gt;Download this article.&lt;/a&gt;&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="Binaural, MPEG"></category></entry><entry><title>How Is Swift Changing the Way We Learn Programming?</title><link href="https://www.nonatomiclabs.com/blog/2015/02/09/how-is-swift-changing-the-way-we-learn-programming.html" rel="alternate"></link><published>2015-02-09T00:00:00+01:00</published><updated>2015-02-09T00:00:00+01:00</updated><author><name>Jean Cruypenynck</name></author><id>tag:www.nonatomiclabs.com,2015-02-09:/blog/2015/02/09/how-is-swift-changing-the-way-we-learn-programming.html</id><summary type="html">&lt;p&gt;&lt;em&gt;Swift&lt;/em&gt;, the new programming language introduced by Apple eight months ago and which already reached the 25th rank of the most used languages list according to &lt;a href="http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html"&gt;TIOBE’s index&lt;/a&gt;, might be more important than expected for worldwide developer’s community.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;em&gt;Swift&lt;/em&gt;, the new programming language introduced by Apple eight months ago and which already reached the 25th rank of the most used languages list according to &lt;a href="http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html"&gt;TIOBE’s index&lt;/a&gt;, might be more important than expected for worldwide developer’s community.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Swift logo" src="https://www.nonatomiclabs.com/blog/2015/02/09/swift-logo.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Every programmer first looking at a Swift program should be able to understand its logic, firstly because Swift is highly readable but above all because &lt;em&gt;Swift is not a total revolution&lt;/em&gt;! Yes, it does introduce new concepts and keywords but it does not change things radically.
+You can find in Swift a wide common background with almost every object-oriented language like variables, conditions, functions, objects, classes, methods, etc.&lt;/p&gt;
+&lt;p&gt;As Python, Swift was created with simplicity in mind but is, according to benchmarks, more efficient than its predecessor. Anyway, the debate &lt;em&gt;Python VS Swift&lt;/em&gt; is not really interesting because both are not designed for same platforms, Swift being totally dedicated to iOS/OS X.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Benchmark of Swift performances" src="https://www.nonatomiclabs.com/blog/2015/02/09/swift-performances.png" /&gt;&lt;/p&gt;
+&lt;p&gt;For me, the first big breakup that Swift creates with previous C-inspired languages is by not being a superset of it, meaning that &lt;em&gt;you can’t compile C code in a Swift project&lt;/em&gt; as you could do in C++ or Objective-C for example. Backward compatibility with C, as in every area, is both a good and bad thing; by abandoning C, Swift allows us to start on good foundation.&lt;/p&gt;
+&lt;p&gt;Swift introduces ease of use for a programmer coming from low-level programming languages as C, but stays highly safe. Safety is, without any doubt, one of the best word to describe Swift.
+For exemple, types of variables in Swift are inferred during compilation; we just use the keyword &lt;code&gt;var&lt;/code&gt; to declare any variable, like in JavaScript. However, unlike JavaScript, Swift allows only one type to be stored in a variable, insuring stable program execution.&lt;/p&gt;
+&lt;p&gt;Often described as a simple language to have fun with, Swift can not be reduced to that.
+Swift provides extremely fast compilation and can handle big amount of data without any problem as it is actually perfect to try a few lines of code too. The mecanism introduced with &lt;em&gt;Playgrounds&lt;/em&gt;, defined as “a place where people can play”, is really a welcome function which allows to test some code without hundreds of configuration parameters and files.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;// Traditional &amp;quot;Hello, world!&amp;quot; program in Swift&lt;/span&gt;
+&lt;span class="bp"&gt;println&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Hello, world!&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;// Simplest way to use a string!&lt;/span&gt;
+&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nv"&gt;name&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Swift&amp;quot;&lt;/span&gt;
+&lt;span class="bp"&gt;println&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Hello, &lt;/span&gt;&lt;span class="si"&gt;\(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="si"&gt;)&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;As a student often exposed to IT and especially programming, it’s been some years that I am wondering how will programming be taught in the future.
+Without really becoming more complex, languages now involve a higher level of abstraction and handle some basic operations for us; we do not have to write functions to create a window, handle keyboard, etc. Instead of this, we have to develop in the framework already provided.
+I think we are in a transition period between a inevitable education about low-level computer functionalities and a future world in which people will either work in high-level programming or in conception of low-level links between hardware and software; we have to accept that we can not anymore have a whole knowledge in IT.&lt;/p&gt;
+&lt;p&gt;Another interesting point is that, as shown amongst others by introduction of M7 motion coprocessor by Apple in iPhone 5S, industry slowly comes back to a CISC architecture, opposed to the current RISC one, meaning concretely communication capabilities between different classic elements (sound card, GPS, etc.) without necessarily going through the CPU runtime.
+We can then think that future of programming will be about specialization in one field, as complex as many fields before.&lt;/p&gt;
+&lt;p&gt;Eventally, even if Swift will probably never be available on other platforms than iOS and OS X, it opens a new way to define what programming languages will look like tomorrow, based on ease and efficiency with both quick playgrounds and bigger programs, all with a simpler syntax without any compromise about safety.&lt;/p&gt;</content><category term="Swift"></category></entry><entry><title>Multichannel Mobile Listening: A State Of The Art</title><link href="https://www.nonatomiclabs.com/blog/2015/02/09/multichannel-mobile-listening-a-state-of-the-art.html" rel="alternate"></link><published>2015-02-09T00:00:00+01:00</published><updated>2015-02-09T00:00:00+01:00</updated><author><name>Jean Cruypenynck</name></author><id>tag:www.nonatomiclabs.com,2015-02-09:/blog/2015/02/09/multichannel-mobile-listening-a-state-of-the-art.html</id><summary type="html">&lt;p&gt;Nowadays, the multiplication of audiovisual contents media such as computers, tablets and smartphones has created a major change in our behavior of content consumption. Broadcasting companies have to adapt their contents to fit our habits.&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
+&lt;p&gt;This article was originally written in May 2014 for the &lt;a href="http://www.iabmfoundation.org/Awards.aspx"&gt;IABM Engineering Student Awards&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1&gt;Abstract&lt;/h1&gt;
+&lt;p&gt;Nowadays, the multiplication of audiovisual contents media such as computers, tablets and smartphones has created a major change in our behavior of content consumption. Broadcasting companies have to adapt their contents to fit our habits.&lt;/p&gt;
+&lt;p&gt;Binaural and transaural listening are parts of this conversion to mobility.&lt;/p&gt;
+&lt;h1&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;Even though binaural recording goes back to 1881 and Clément Adler's &lt;em&gt;Théâtrophone&lt;/em&gt;, it is currently expanding. Major broadcasting companies are all thinking about binaural reproduction for a mobile audience.&lt;/p&gt;
+&lt;p&gt;In fact, we are approaching hyperrealism in increasing the numbers of audio channels and engaging from 2D to 3D in video. These improvements are set up to immerse the audience in the action.&lt;/p&gt;
+&lt;p&gt;After becoming stereophonic, the sound became multichannel for the first time in 1937 with &lt;em&gt;Fantasia&lt;/em&gt; from Walt Disney in quadriphony.  Since this moment, playback has passed by 5.1, 7.1, finally coming to &lt;em&gt;Dolby Atmos&lt;/em&gt; and &lt;em&gt;Auro 3D&lt;/em&gt;. If 5.1 has now become a standard, there is no doubt about the interest of public in obtaining more and more sound channels. But, having 64 channels as in &lt;em&gt;Dolby Atmos&lt;/em&gt; in our room will not became the new standard. Here is the role played by binaural and transaural listening.&lt;/p&gt;
+&lt;h1&gt;Prerequisites&lt;/h1&gt;
+&lt;p&gt;This section presents some of the key concepts in mobile multichannel listening.&lt;/p&gt;
+&lt;h2&gt;Convolution&lt;/h2&gt;
+&lt;p&gt;As will be explained in next section, convolution is at the heart of both binaural and transaural listening.&lt;/p&gt;
+&lt;p&gt;Dating from 18th century, convolution is now a widely-used operation in digital signal processing.&lt;/p&gt;
+&lt;p&gt;If you have never been enlightened as to the joys of convolution, here you can find a short recap of this operation.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Definition:&lt;/strong&gt; Let us assume that &lt;span class="math"&gt;\(f\)&lt;/span&gt; and &lt;span class="math"&gt;\(g\)&lt;/span&gt; are two functions of a time variable &lt;span class="math"&gt;\(t\)&lt;/span&gt;. So, the convolution product of &lt;span class="math"&gt;\(f\)&lt;/span&gt; by &lt;span class="math"&gt;\(g\)&lt;/span&gt; is defined by:&lt;/p&gt;
+&lt;div class="math"&gt;$$f\left(t\right)\ast g\left(t\right)=\int_{-\infty}^{+\infty}f\left(t\right)g\left(x-t\right)\mathrm{d}t$$&lt;/div&gt;
+&lt;p&gt;The impulse response of a linear, continuous-time, time-invariant system (afterwards called LTI systems) is defined by the output of the system when it is submitted to a Dirac distribution.&lt;/p&gt;
+&lt;p&gt;The Dirac distribution is defined as a distribution equal to zero for all &lt;span class="math"&gt;\(t\)&lt;/span&gt; except zero, equal to &lt;span class="math"&gt;\(+\infty\)&lt;/span&gt; for &lt;span class="math"&gt;\(t=0\)&lt;/span&gt; and whose integral is equal to 1.&lt;/p&gt;
+&lt;p&gt;Knowing the impulse response of a LTI system, we can can convolve it with an input signal to reproduce the behavior of the system. We can also predict the output of this system for a specific input.&lt;/p&gt;
+&lt;p&gt;An interesting fact in convolution is that the convolution product of two temporal functions is equal to the inverse Fourier transform of the simple product of the two frequency functions or, in other means the Fourier transform of our two temporal functions.&lt;/p&gt;
+&lt;p&gt;It leads to the following equation:&lt;/p&gt;
+&lt;div class="math"&gt;$$\mathcal F\left[f \left(t \right) * g\left(t \right)\right] = F \left( \nu \right) \times G \left( \nu \right)$$&lt;/div&gt;
+&lt;p&gt;considering respectively &lt;span class="math"&gt;\(\mathcal F\)&lt;/span&gt; and &lt;span class="math"&gt;\(\mathcal G\)&lt;/span&gt; as the Fourier transform of &lt;span class="math"&gt;\(f\)&lt;/span&gt; and &lt;span class="math"&gt;\(g\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Without being a main fact of the theorical part, this tip is important in the implementation of convolution, especially in terms of the CPU load.&lt;/p&gt;
+&lt;h2&gt;The listening process&lt;/h2&gt;
+&lt;p&gt;The location of sound sources depends on three components:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;interaural time difference;&lt;/li&gt;
+&lt;li&gt;interaural level difference;&lt;/li&gt;
+&lt;li&gt;spectral indices, which are the characteristics of our head (skin, hair, beard…).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In fact the acoustic pressure of &lt;em&gt;localized&lt;/em&gt; sound source, meaning by this a sound source not placed in the median plan, arrives in a first ear at a certain instant &lt;span class="math"&gt;\(t\)&lt;/span&gt; with a level &lt;span class="math"&gt;\(A\)&lt;/span&gt; and in the second ear at the instant &lt;span class="math"&gt;\(t+\delta t\)&lt;/span&gt; at an amplitude of &lt;span class="math"&gt;\(A−\delta A\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Interaural Time Difference" src="https://www.nonatomiclabs.com/blog/2015/02/09/itd.png" /&gt;&lt;/p&gt;
+&lt;p&gt;According to the previous figure, the interaural time difference is equal to &lt;span class="math"&gt;\(r \left( \sin\theta +\theta \right)\)&lt;/span&gt;. The interaural level difference would be equal to the &lt;span class="math"&gt;\(\delta A\)&lt;/span&gt; mentionned before.&lt;/p&gt;
+&lt;h1&gt;About binaural&lt;/h1&gt;
+&lt;p&gt;Binaural sound has the ambition to reproduce a three-dimensionnal sound field with two in-ear audio channels only. This technology, although seeming innovative is not new and is based on simple physical principles.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Acquisition of the BRIR:&lt;/strong&gt; The principle is to record the result of a known test signal reproduced by a spatialized sound source in each ear. Little electret condenser microphones placed in ears are often used to achieve these measurements. After being recorded, the signal is deconvoluted in an impulse response.&lt;/p&gt;
+&lt;p&gt;The group of impulse responses obtained by repeating the operation for each channel of a multichannel system is known as &lt;em&gt;Brain Related Impulse Response&lt;/em&gt; (BRIR). From BRIR, we can easily extract the &lt;em&gt;Head Related Transfer Function&lt;/em&gt; (HRTF), in fact in going in frequency domain by Fourier transform.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Use of the BRIR:&lt;/strong&gt; When the BRIR is obtained, each channel of a signal is convoluted with its corresponding left and right impulse responses, as shown on the figure below. The output signal is therefore a stereophonic signal reproducing a multichannel system.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Multiple source binaural spatializer" src="https://www.nonatomiclabs.com/blog/2015/02/09/binaural-convolution.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Main issue:&lt;/strong&gt; The main issue in binaural listening is the unique nature of each BRIR. In fact, the BRIR depends on characteristics of our head. Sound sources localization can be very altered in a binaural signal made with a generic BRIR.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Test signals:&lt;/strong&gt; Test signals used to measure BRIR are essentially the same as in reverb impulse response measurements. Nowadays, it appears that the exponential sine sweep signal still seems the best in terms of fidelity and signal-to-noise ratio. This signal is defined by:&lt;/p&gt;
+&lt;div class="math"&gt;$$x \left( t \right) = \sin\left[\frac{\omega_1 T}{\ln \left( \frac{\omega_1}{\omega_2}\right)}\left(\mathrm e ^{\frac{t}{T} \ln \left( \frac{\omega_2}{\omega_1}\right)}-1\right)\right]$$&lt;/div&gt;
+&lt;h1&gt;About transaural&lt;/h1&gt;
+&lt;p&gt;The founding principles of transaural are the same as binaural. The difference between both is in the playback means. In the case of transaural, we use external speakers while in binaural we use headphones.&lt;/p&gt;
+&lt;p&gt;In concrete terms, transaural listening reproduces multichannel listening in a specific room with two speakers, using the transfer function of the room.&lt;/p&gt;
+&lt;p&gt;This is achieved with cross-talk cancelling. Traditionnally, when listening with speakers, the left signal goes to the left ear and a little bit to the right ear and conversely. In transaural, we filter left and right signals to properly separate the signals. After obtaining the cross-talk cancellation function, it only remains to put binaural signals in input and the signal at the ears will be spatialized.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="General transaural filter" src="https://www.nonatomiclabs.com/blog/2015/02/09/transaural-filter.png" /&gt;&lt;/p&gt;
+&lt;p&gt;In transaural, the main problem is the unique nature of the transfer functions of the rooms.&lt;/p&gt;
+&lt;h1&gt;Possible Future Evolutions&lt;/h1&gt;
+&lt;p&gt;Without mating wild guesses, we already can think about believable audio innovations to revolutionise the current situation.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Recognition enhancements:&lt;/strong&gt; Firstly, recognition of spectral indices and rooms. It would put aside the uniqueness of:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;each BRIR;&lt;/li&gt;
+&lt;li&gt;rooms in which transaural content would be listened to.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For the BRIR, two ways seem to emerge:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Using different morphotypes to categorize most of the population.&lt;br /&gt;
+About ten morphotypes appear to be enough; the user would be asked to describe their face and the software would build a specific IR adapted to them.
+* Using pictures to create a 3D map of the subject's face and design their BRIR. &lt;/em&gt;Thirdlove* company has already launched a mobile application for women to find their real bra size with only two pictures. With maybe, let's say, five pictures of our face, it would be possible to get an accurate 3D map.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Google&lt;/em&gt; is currently developping a technology called &lt;em&gt;Tango&lt;/em&gt;: it makes it possible to create a 3D map of our environment from our smartphone or tablet. Combined to the accelerometer and gyroscope which have already been present for a couple of years, we could get a tablet which adapts the sound output according to the position in space to create a transaural result. Of course, there would be other problems in this case like lack of acoustical power and informations about room materials.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Access enhancements:&lt;/strong&gt; We could think about a cloud platform like &lt;em&gt;Dropbox&lt;/em&gt; containing our personal BRIR. When taking the tablet of a friend, we would just have to log into our account and access our BRIR to listen to multichannel content on their device.&lt;/p&gt;
+&lt;p&gt;In terms of production and broadcast, it would be possible to send the user an MPEG Surround stream which would be decoded into binaural content if headphones are plugged in, into transaural content if using the speakers of a mobile device, or into classical multichannel content matching the actual configuration of the user, &lt;em&gt;i.e.&lt;/em&gt; 7.1 to 5.1.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Algorithm enhancements:&lt;/strong&gt; Finally, I wrote before that the impulse response of a LTI system makes it possible to oversee the output of this system knowing the input. But our listening process can not really be assimilated to a linear system. So we can also imagine an enhancement of the binaural/transaural transcoding in this way: non-linear convolution and Volterra series could be the basis of this tweak. These operations will not be seen in this paper but I invite the reader to find out more about them.&lt;/p&gt;
+&lt;h1&gt;Conclusion&lt;/h1&gt;
+&lt;p&gt;Technology allows us to achieve more and more complex processes and we have to take advantage of that. Now that our computers are able to process real-time convolutions, there just remains the issue of personalized BRIR and rooms.&lt;/p&gt;
+&lt;p&gt;For the first, it would be possible to create enough categories to fit the vast majority of users or to determine each BRIR via 3D modelisation based on pictures of our face.&lt;/p&gt;
+&lt;p&gt;For the second, we have to use waves to recreate the architecture of the room and use motion sensors and near field information to know the exact place of the user.&lt;/p&gt;
+&lt;p&gt;Although both binaural and transaural listening seem far from us, I think the two methods are a future logical implementation. Binaural personalisation does not seem too hard to create whereas the transaural modelisation of a room would take more years to develop.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.nonatomiclabs.com/download/Multichannel Mobile Listening - A State of the Art.pdf"&gt;Download this article.&lt;/a&gt;&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="Binaural"></category></entry></feed>

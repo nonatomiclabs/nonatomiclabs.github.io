@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>nonatomic.blog - Codecs</title><link href="https://www.nonatomiclabs.com/" rel="alternate"></link><link href="https://www.nonatomiclabs.com/feeds/codecs.atom.xml" rel="self"></link><id>https://www.nonatomiclabs.com/</id><updated>2018-02-15T00:00:00+01:00</updated><entry><title>The case of HEIF</title><link href="https://www.nonatomiclabs.com/blog/2018/02/15/the-case-of-heif.html" rel="alternate"></link><published>2018-02-15T00:00:00+01:00</published><updated>2018-02-15T00:00:00+01:00</updated><author><name>Jean Cruypenynck</name></author><id>tag:www.nonatomiclabs.com,2018-02-15:/blog/2018/02/15/the-case-of-heif.html</id><summary type="html">&lt;p&gt;Since Apple released iOS 11, HEIF replaced JPEG. Let's learn a bit more about this successor!&lt;/p&gt;</summary><content type="html">&lt;p&gt;Eight months ago, Craig Federighi was presenting new iOS 11 features, including HEVC and HEIF encoding for all videos and pictures. While HEVC was already a known buzzword at the time, the way he introduced HEIF and the fact that Apple is the only big company publicly using it can make one think that this "HEVC for pictures" was invented by Apple, even though it is not the case. This gave me the idea to write this short article about HEIF.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This article assumes basic knowledge of image compression (common codecs and encoding modes)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img alt="Craig Federighi presenting HEIF to masses" src="https://www.nonatomiclabs.com/blog/2018/02/15/federighi-wwdc-2017.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Some key points about HEIF:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;HEIF (short for High Efficiency Image File Format) is, as its name implies, a &lt;em&gt;file format&lt;/em&gt;. I emphasize that because many people incorrectly think that HEIF is a codec, which it is not.&lt;/li&gt;
+&lt;li&gt;Even though the first time it was presented to the masses (the WWDC 2017) was last year, HEIF started being defined in 2013 and was finalized in 2015.&lt;/li&gt;
+&lt;li&gt;As with HEVC, HEIF was made by the MPEG group and is part of MPEG-H: it is the part 12, whereas HEVC is the part 2 and &lt;a href="https://www.nonatomiclabs.com/blog/2015/06/05/mpeg-h-audio-fitting-every-device.html"&gt;MPEG-H 3D Audio&lt;/a&gt; is part 3.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The following types of images can be stored in an HEIF file:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;images with their corresponding thumbnail&lt;/li&gt;
+&lt;li&gt;image sequences with inter encoding (which is a very interesting point for Live Photos)&lt;/li&gt;
+&lt;li&gt;derived image, a non-destructive edited version of the initial image with support for basic transformations (rotation, cropping, etc.)&lt;/li&gt;
+&lt;li&gt;auxiliary items, including for instance a depth map (which is a very interesting point for the iPhone Plus range)&lt;/li&gt;
+&lt;li&gt;metadata, both EXIF and XMP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We understand easily why Apple decided to adopt HEIF as a replacement for JPEG. Well, replacement might not be the best word here because we didn't tackle the encoding part yet. Inside an HEIF file, images are actually encoded with HEVC or H.264 and thumbnails are encoded in… JPEG!&lt;/p&gt;
+&lt;p&gt;Last but not least, we must mention file extensions. One can notice that macOS gives the "HEIC" extension to all photos. Apple chose that extension to indicate that an HEI&lt;strong&gt;C&lt;/strong&gt; file is an HEIF file containing HEV&lt;strong&gt;C&lt;/strong&gt;-encoded pictures. As for Live Photos, these are stored with the extension "HEICS", where "S" stands for sequence.&lt;/p&gt;
+&lt;p&gt;That's it for today, I hope this post made you understand better the differences between HEVC, HEIF and HEIC!&lt;/p&gt;</content><category term="Codecs"></category></entry></feed>
