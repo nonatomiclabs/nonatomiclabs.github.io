@@ -1,0 +1,53 @@
+<header>
+  <a id="logo" href="/">
+    non<span id="atomic">atomic</span>.blog
+  </a>
+  <nav>
+    <a href="/about">About</a>
+  </nav>
+</header>
+
+<style>
+  @font-face {
+    font-family: "Karla";
+    src: url("/fonts/karla_boldstencil-webfont.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  a:link,
+  a:visited,
+  a:hover,
+  a:active {
+    text-decoration: none;
+    color: var(--dark-blue);
+  }
+
+  header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin: auto;
+    padding-top: 1em;
+    padding-bottom: 1.5rem;
+  }
+
+  #logo {
+    font-family: "Karla";
+    font-size: 37px;
+  }
+
+  #atomic {
+    color: var(--red);
+  }
+
+  #atomic:hover {
+    color: var(--dark-blue);
+    transition: 1s;
+  }
+
+  nav {
+    font-size: 20px;
+    display: inline;
+  }
+</style>

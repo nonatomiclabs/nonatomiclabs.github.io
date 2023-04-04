@@ -1,0 +1,40 @@
+---
+interface Props {
+  style?: string;
+}
+
+const { style = "info" } = Astro.props;
+---
+
+<div class={style}>
+  <slot />
+</div>
+
+<style>
+  div {
+    border: solid 1.5px;
+    border-radius: 4px;
+    padding: 5px 15px;
+    margin: 10px 0;
+  }
+
+  .info {
+    border-color: #1b98e0;
+    background-color: #1b98e056;
+  }
+
+  .success {
+    border-color: #85d254;
+    background-color: #85d25456;
+  }
+
+  .warning {
+    border-color: #ffe203;
+    background-color: #ffe20356;
+  }
+
+  .error {
+    border-color: #ff0f0f;
+    background-color: #ff0f0f36;
+  }
+</style>

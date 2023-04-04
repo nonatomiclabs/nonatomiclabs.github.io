@@ -1,0 +1,20 @@
+---
+import Date from "../components/Date.astro";
+import Layout from "../layouts/Layout.astro";
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout title="nonatomic.blog">
+  <h1>{frontmatter.title}</h1>
+  <p><Date rawDate={frontmatter.date} /></p>
+  <slot />
+</Layout>
+
+<style>
+  p {
+    margin-top: 5px;
+    margin-bottom: 25px;
+    font-style: italic;
+  }
+</style>

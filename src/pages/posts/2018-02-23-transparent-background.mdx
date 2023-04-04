@@ -1,0 +1,54 @@
+---
+layout: ../../layouts/MarkdownPostLayout.astro
+title: "How to Make an Image's Background Transparent?"
+date: 2018-02-23
+tags: ["Image Processing"]
+summary: "Learn how to use ImageMagick to adjust an image's background"
+---
+import Image from "../../components/Image.astro";
+import ImageGrid from "../../components/ImageGrid.astro";
+import Alert from "../../components/Alert.astro";
+
+You probably have already downloaded once an image with a white background, such as this one (the grey area around the logo just serves the purpose of seeing the white background).
+
+<Image path="2018-02-23-logo-white.png" caption="Logo with white background" style="padding: 20px; background:rgb(222, 222, 222); border-radius: 5px;" />
+
+For a number of reasons, one could want to have the same image with a transparent background. Luckily, [ImageMagick](http://imagemagick.org/script/index.php) has our back covered once more.
+
+If you haven't already, install ImageMagick:
+
+```bash
+brew install imagemagick
+```
+
+<Alert>
+  Even though installed as `imagemagick`, there is no `imagemagick` command. Instead, [many separate commands](https://imagemagick.org/script/command-line-tools.php) are defined for different use cases. Today, we'll use the `convert` command.
+</Alert>
+
+With ImageMagick installed, the easiest way to remove the white background is to use the following command:
+
+~~~
+convert test.png -transparent white transparent.png
+~~~
+
+The command is very simple: we pass an input and output files and the [`-transparent` option](https://imagemagick.org/script/command-line-options.php#transparent) is used to select the color we want to make transparent which can be passed as a color name or in hex/RGB format. Of course, you should choose an output format which handles transparency, such as PNG. The input can be in any format though.
+
+Trying this command with our image from above gives the following. This looks fine, however if we look more closely we'll see that not all white parts have been removed.
+
+<ImageGrid>
+  <Image path="2018-02-23-logo-transparent1.png" caption="Logo with transparent background" style="padding: 20px; background:rgb(222, 222, 222); border-radius: 5px;"/>
+  <Image path="2018-02-23-logo-transparent1-detail.png" caption="Close-up" style="padding: 20px; background:rgb(222, 222, 222); border-radius: 5px;"/>
+</ImageGrid>
+
+The `-fuzz` option can help us here. It simply matches colors that are within *x* percents of the intensity of the target color. In most cases, 2% is a reasonable value.
+
+~~~
+convert test.png -fuzz 2% -transparent white transparent.png
+~~~
+
+Voilà!
+
+<ImageGrid>
+  <Image path="2018-02-23-logo-transparent2.png" caption="Final logo" style="padding: 20px; background:rgb(222, 222, 222); border-radius: 5px;"/>
+  <Image path="2018-02-23-logo-transparent2-detail.png" caption="Close-up" style="padding: 20px; background:rgb(222, 222, 222); border-radius: 5px;"/>
+</ImageGrid>

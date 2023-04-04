@@ -1,0 +1,13 @@
+---
+const { rawDate } = Astro.props;
+
+const options: Intl.DateTimeFormatOptions = {
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+};
+const parsedDate = new Date(rawDate);
+const formattedDate = parsedDate.toLocaleDateString("en-US", options);
+---
+
+{formattedDate}

@@ -1,0 +1,17 @@
+---
+interface Props {
+  path: string;
+  caption?: string;
+  style?: string;
+}
+
+const { path, caption, style } = Astro.props;
+const fullImagePath = "/images/".concat(path);
+---
+
+<figure>
+  <img src={fullImagePath} alt={caption} style={style} />
+  <figcaption class="figure-caption">
+    {caption}
+  </figcaption>
+</figure>
