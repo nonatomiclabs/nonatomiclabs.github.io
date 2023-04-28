@@ -1,8 +1,14 @@
 ---
 layout: ../layouts/Layout.astro
 ---
-I am a French software engineer, specializing in programming audio and video software. I currently work at Dolby as a software engineer in test for the next generation audio codec AC-4.
+Hi, I'm Jean 👋
 
-At university, I worked with binaural audio and HEVC compression. My main areas of interest are digital signal compression, digital signal processing, and programming in C/C++ and Python.
+I am a French software engineer, living in Germany. I work as an SDET for more than 5
+years. Currently, I'm working for Dataiku, where I play with Python, AWS, Kubernetes and
+other fun technologies! Outside from work, I love coding in Go.
 
-You can find a copy of my CV [here](https://www.nonatomiclabs.com/download/CV_EN.pdf).
+In the previous years, I have worked a significant time at Dolby for the next generation
+audio codec AC-4. This was a continuation of work I did at university with binaural
+audio and HEVC compression.
+
+You can find my most current CV on [LinkedIn](https://www.linkedin.com/in/cruypenynck/).
