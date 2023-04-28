@@ -62,10 +62,10 @@ img {
   max-width: 100%;
 }
 
-a:link,
-a:visited,
-a:hover,
-a:active {
+p > a:link,
+p > a:visited,
+p > a:hover,
+p > a:active {
   color: var(--red);
 }
 
